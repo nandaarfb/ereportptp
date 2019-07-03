@@ -84,7 +84,7 @@
                                 <li class="li">
                                     <img src="templateslide/assets/img/banner/menu6.jpg" alt="SOP 1 PTP" class="img-fit">
                                 </li>
-                                <li class="li">
+                                <li class="li" onclick="standarMenu()">
                                     <img src="templateslide/assets/img/banner/menu5.jpg" alt="SOP 1 PTP" class="img-fit">
                                 </li>
                             </ul>
@@ -221,6 +221,10 @@
     function sliderMenu(){
         $(".ukMenu").hide();
         $("#sliderMenu").show();
+    }
+
+    function standarMenu(){
+        location.href='/sop';
     }
 
 </script>

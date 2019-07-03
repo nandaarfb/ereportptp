@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/sop', function () {
+    return view('sop.sop');
+});
