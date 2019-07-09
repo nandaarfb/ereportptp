@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('index');
 });
 
+<<<<<<< HEAD
 Route::get('/sop', function () {
     return view('sop.sop');
 });
+=======
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> 25bda55d403238f3bd196f98e7e312916bc2fbfb

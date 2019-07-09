@@ -41,7 +41,7 @@
                                             <img src="templateslide/assets/img/logo/ptp.png" class="fl-logo">
                                         </td>
                                         
-                                        <td class="menu" onclick="sliderMenu()">
+                                        <td class="menu" onclick="url('/')">
                                             Home        
                                         </td>
 
