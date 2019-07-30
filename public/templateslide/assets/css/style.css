@@ -1,239 +1,215 @@
-.fl-logo{
-    height:50px;
+html{
+    background-color: #283a5a !important;
+    -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      
 }
 
-.li:hover{
-    box-shadow:rgba(0, 0, 0, 0.08) 0px 0px 80px 0px;
-    z-index: 1000;
+.super-main{
+    height: 100vh !important;
+    width: 100%;
 }
 
-.img-fit{
-    width:100%;height:100%;
-    object-fit:cover;
+.fl-main-container{
+    padding:20px 80px 30px 80px;
+}
+
+.fl-header-margin{
+    padding:20px 0px 15px 0px;
+    background-color: #283a5a;
+}
+
+.fl-header{
+    font-size: 22px;
+    color: #fff;
+    margin-bottom:20px;
     cursor: pointer;
 }
 
-.img-fit:hover{
-    height:100.5%;
+.fl-menu-tool{
+    float: right;
 }
 
-.menu{
-    padding-right:30px;
-    font-weight: 500;
-    cursor: pointer; 
-    color: rgb(29, 28, 28);
+.fl-menu-box{
+    cursor: pointer;
+    opacity:10 !important; 
 }
 
-.menu:hover{
-    color: #fa9e2d;
+.fl-logo{
+    height: 50px;
 }
 
-.divHeader{
-    padding: 10px 30px 10px 50px;
-    text-align: left;
-    background-color:rgba(255, 255, 255, 0.90);
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+.fl-icon-menu{
+    height: 90%;
+    width: 90%;
 }
 
-.uk-slider-items2{
-    min-height:50vh !important;
+.fl-title-logo{
+    top: 30 !important;
 }
 
-.uk-slider-items3{
-    min-height:100vh !important;
-}
-
-.uk-card-body2{
-    padding:20px 30px !important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-}
-
-.uk-card-body3{
-    padding:10px 20px !important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-    font-weight: 600;
-    background-color: #fa9e2d !important;
+.fl-box-color1{
+    background-color: #2879ec !important;
     color:#fff !important;
 }
 
-.uk-nav-sub a{
-    padding: 10px 30px 10px 0px !important;
+.fl-box-color2{
+    background-color: #0077c8 !important;
+    color:#fff !important;
 }
 
-.container-slide{
-    width:100%;
+.fl-box-color3{
+    background-color: #3077b8 !important;
+    color:#fff !important;
 }
 
-.container-comment{
-    padding:10px;
-    margin:20px;
-    height:60vh;
+.fl-box-color4{
+    background-color: #094fb7 !important;
+    color:#fff !important;
 }
 
-.fl-card{
-    border-radius:10px;
+.fl-box-color5{
+    background-color: #290076 !important;
+    color:#fff !important;
 }
 
-.fl-title{
-    padding:10px 15px;
-    height:120px;
-    text-align:center;
+.fl-box-color6{
+    background-color: #f4b459 !important;
+    color:#fff !important;
 }
 
-.fl-title2{
-    height:180px;
-    text-align:center;
+.fl-box-color7{
+    background-color: #e9b959 !important;
+    color:#fff !important;
 }
 
-.fl-footer{
-    font-size:15px;
-    color:rgb(0, 0, 0);
-    padding:10px;
-    padding-right:50px; 
-    background-color:#f7f7f7;
-    bottom: 0;
-    position: fixed;
+.fl-box-color8{
+    background-color: #f56f26 !important;
+    color:#fff !important;
+}
+
+.fl-box-color9{
+    background-color: #fcb01c !important;
+    color:#fff !important;
+}
+
+
+.fl-box-color10{
+    background-color: #1aa1a7 !important;
+    color:#fff !important;
+}
+
+.fl-box-color11{
+    background-color: #1a59da !important;
+    color:#fff !important;
+}
+
+.fl-box-color12{
+    background-color: #806bf6 !important;
+    color:#fff !important;
+}
+
+.fl-box-color13{
+    background-color: #0cb9ff !important;
+    color:#fff !important;
+}
+
+.fl-box-color14{
+    background-color: #feab08 !important;
+    color:#fff !important;
+}
+
+
+
+.uk-card-title{
+    color:#fff !important;
+}
+
+.uk-card-body{
+    padding: 0 !important;
+}
+
+
+.fl-figure{
+    width: 100%;
+    padding: 10px;
+}
+
+
+
+.fl-figcaption{
+    z-index:50000
+}
+
+
+
+.fl-submenu{
+    text-align: center;
+    padding:10px 0px;
+    font-size: 12px;
+    background-color: #fff;
+}
+
+.fl-image-figure{
     width: 100%;
 }
 
-.uk-nav-default > li > a{
-    color:rgb(97, 97, 97) !important;
+
+
+[class*=" imghvr-"] figcaption, [class^="imghvr-"] figcaption{
+    padding: 0 !important;
 }
 
-.uk-nav-default > li > a:hover{
-    color:rgb(5, 80, 141) !important;
+
+.uk-modal-dialog{
+    width:850px !important;
+    border-radius: 10px;
 }
 
-.fl-button-small{
-    border-radius: 8px !important;
-    background-color: #0b4fa4 !important;
+.fl-icon{
+    height: 55px;
+    display: block;
+    cursor: pointer;
+}
+
+.fl-icon-title{
+    font-size: 12px;
+    color:#000;
+    cursor: pointer;
 }
 
 .fl-button{
-    width:95% !important;
-    border-radius: 8px !important;
-    background-color: #0b4fa4 !important;
+    border-radius: 4px !important;
 }
 
-
-.fl-button-box{
-    border-radius: 18px !important;
-    background-color: #ffffff !important;
-    color: #464646 !important;
-    font-weight: 600 !important;
-    margin-top: 20px !important;
-    font-variant: normal !important;
-    bottom: 0 !important; 
-}
-
-.fl-button-box:hover{
-    color: #000000 !important;
-    background-color: #ececec !important;
-}
-
-
-.fl-button-box-green{
-    border-radius: 18px !important;
-    background-color: #3db39e !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    margin-top: 20px !important;
-    font-variant: normal !important;
-    bottom: 0 !important;
-    border:none !important; 
-}
-
-.fl-button-box-green:hover{
-    color: #ffffff !important;
+.fl-button-circle{
+    border-radius: 10px !important;
     background-color: #3db39e !important;
 }
 
-.fl-box{
-    height:44vh;
-    text-align: center;
+.fl-search{
+    float: right;
 }
 
-.fl-box1{
-    background-color: #feac56 !important;
-    color:#fff !important;
+.fl-table{
+    background-color:#fff;
+    padding:20px;
+    margin-top:8px
 }
 
-.fl-box2{
-    background-color: #ff982a !important;
-    color:#fff !important;
+.fl-table-head th{
+    font-weight: 700 !important;
+    color:#000 !important; 
 }
 
-.fl-box3{
-    background-color: #fd8709 !important;
-    color:#fff !important;
+.fl-title-page{
+    background-color: #fff;
+    padding: 5px 20px;
+    border-radius:1px;
 }
 
-.fl-box4{
-    background-color: #3b7fbb !important;
-    color:#fff !important;
-}
-
-.fl-box5{
-    background-color: #538bbd !important;
-    color:#fff !important;
-}
-
-.fl-box6{
-    background-color: #266ead !important;
-    color:#fff !important;
-}
-
-
-.divTitleBoxBold{
-    padding:0px 20px;
-    color: #fff;
-    font-size: 20px;
-}
-
-
-.divTitleBox{
-    padding:0px 20px;
-    color: #fff;
-    font-size: 16px;
-}
-
-.divLogout{
-    text-align: right;
-    padding: 10px 90px;
-}
-
-.tblSlide{
-    width: 100%;
-    height: 100%;
-}
-
-.tdSlide{
-    background: #fcbe4b;
-}
-
-.tdSlide2{
-    background: #faa742;
-}
-
-.tdSlide3{
-    background: #f5aa1e;
-}
-
-.tdSlide4{
-    background: #fcbe4b;
-}
-
-.tdSlide5{
-    background: #229ce2;
-}
-
-.tdSlide6{
-    background: #247eb3;
-}
-
-.tdSlide7{
-    background: #0d7bbb;
+.fl-sop{
+    height:50vh;
 }

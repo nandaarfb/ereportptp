@@ -1,10 +1,11 @@
-<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>PT. Pelabuhan Tanjung Priuk</title>
 
 <link href="templateslide/assets/css/style.css" rel="stylesheet" type="text/css">
+<link href="templateslide/assets/css/imagehover/imagehover.min.css" rel="stylesheet" type="text/css">
 <link href="templateslide/assets/uikit/css/uikit.css" rel="stylesheet" type="text/css">
 <link href="templateslide/assets/datepicker/daterangepicker.css" rel="stylesheet" type="text/css">
 <link href="templateslide/assets/datepicker/daterangepicker.css" rel="stylesheet" type="text/css">
@@ -24,207 +25,262 @@
 </head>
 
 <body>
-    <div>
-        
-        <div align="center" class="uk-child-width-expand@s uk-text-center uk-grid-collapse" style="background-color:#ef8203" uk-grid>           
-            <div style="background-color:#ffff;padding-top:0px;" align="center">
-                <div>
+<body>
+
+	<table class="super-main" valign="middle">
+		<tr>
+			<td>
+				<div class="fl-main-container">
+					<!---Header----------->
+					<div class="fl-header">
+						<div>
+							<img src="templateslide/assets/img/logo/ptpwhite.png" class="fl-logo">
+							
+							<span class="fl-title-logo">
+								E-Reporting PT. Pelabuhan Tanjung Priok	
+							</span>
+
+							<span class="fl-menu-tool">
+								<input type="button" class="uk-button uk-button-primary fl-button" value="menu">
+							</span>
+						</div>	
+					</div>
+
+					<div class="fl-container">
+						<div uk-slider="clsActivated: uk-transition-active">
+							<ul class="uk-slider-items uk-child-width-1-1@s uk-child-width-1-1@ uk-grid">
+									
+								<li>
+									<div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-1-3@m uk-child-width-1-2@s">
+										
+										<div>
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color1">
+												<table>
+													<tr>
+														<td>
+															<img src="templateslide/assets/img/image/fl1.jpg" class="fl-image-figure" onclick="showModal()">
+														</td>
+													</tr>
+												</table>								    
+											</div>
+										</div>
+
+										<div>
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color3">
+											    <table>
+													<tr>
+														<td>
+															<img src="templateslide/assets/img/image/fl3.jpg" class="fl-image-figure" onclick="showModal()">																											
+														</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+
+										<div>
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color4">
+											   <table>
+													<tr>
+														<td>
+															<img src="templateslide/assets/img/image/fl4.jpg" class="fl-image-figure" onclick="showModal()">																											
+														</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+
+										<div>
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color2">
+											    <table>
+													<tr>
+														<td>
+															<img src="templateslide/assets/img/image/fl2.jpg" class="fl-image-figure" onclick="showModal()">																											
+														</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+
+										<div>
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color5">
+											    <table>
+													<tr>
+														<td>
+															<img src="templateslide/assets/img/image/fl5.jpg" class="fl-image-figure" onclick="showModal()">																											
+														</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+
+										<div>
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color6">
+											    <table>
+													<tr>
+														<td>
+															<img src="templateslide/assets/img/image/fl6.jpg" class="fl-image-figure" onclick="showModal()">		
+														</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+									</div>	
+								</li>
+
+								<li>
+									<div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-1-3@m uk-child-width-1-2@s">
+										<div>
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color7">
+										    <table>
+													<tr>
+														<td>
+															<img src="templateslide/assets/img/image/fl7.jpg" class="fl-image-figure" onclick="showModal()">																											
+														</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+										<div>
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color3">
+												<table>
+													<tr>
+														<td>
+															<a href="master_menu"><img src="templateslide/assets/img/image/fl8.jpg" class="fl-image-figure"></a>																									
+														</td>
+													</tr>
+												</table>
+											</div>
+										</div>									
+									</div>	
+								</li>
+							</ul>
+
+							<a class="uk-position-center-left uk-position-small uk-hidden-hover uk-light" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+			       			<a class="uk-position-center-right uk-position-small uk-hidden-hover  uk-light" href="#" uk-slidenav-next uk-slider-item="next"></a>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
 
 
-                    <!----------Header Menu------------------------------------------------------->
-                    <div class="divHeader">
-                        <div class="uk-child-width-1-2 uk-child-width-1-2@m uk-child-width-1-2@s uk-text-center uk-grid-collapse" uk-grid>
-                            <div>
-                                <table>
-                                    <tr>
-                                        <td class="menu">
-                                            <img src="templateslide/assets/img/logo/ptp.png" class="fl-logo">
-                                        </td>
-                                        
-                                        <td class="menu" onclick="sliderMenu()">
-                                            Home        
-                                        </td>
+	<!-- This is the modal -->
+	<div id="mymodal" uk-modal >
+		<div class="uk-modal-dialog uk-modal-body">
+			<div style="margin-bottom:30px">
+				<span style="font-size:18px">Pilih Divisi / Departement</span>
+				<span class="fl-search">
+					<input class="uk-input uk-form-width-medium" type="text" placeholder="Cari Divisi">
+				</span>
+			</div>
 
-                                        <!-- <td class="menu">
-                                            Cara Penggunaan
-                                        </td>
+			<div style="height:310px" data-simplebar data-simplebar-auto-hide="true">
+				<div uk-grid class=" uk-child-width-1-2 uk-child-width-1-4@m uk-child-width-1-2@s" align="center">
+					<div>
+						<a href="sarmut">
+							<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						</a>
+						<span class="fl-icon-title">Divisi Human Capital</span>
+					</div>
+					
+					<div>
+					<a href="kpi">
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+					</a>
+						<span class="fl-icon-title">Divisi Operasi Terminal</span>
+					</div>
 
-                                        <td class="menu">
-                                            Customer Service
-                                        </td>  -->                          
-                                    </tr>
-                                </table>
-                            </div>
-                            <div>
-                                <div class="divLogout">
-                                    <button class="uk-button uk-button-default uk-button-primary fl-button-small">
-                                        Logout
-                                    </button>
-                                </div>
-                            </div>
-                        </div>                        
-                    </div>
+					<div>
+					<a href="manajemen_report">
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+					</a>
+						<span class="fl-icon-title">Divisi Peralatan</span>
+					</div>
 
-                    <!--------Slider Menu---------------------------------------->
-                    <div id="sliderMenu" class="ukMenu">
-                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="sets: true">
-                            <ul class="uk-slider-items uk-slider-items3 uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-2@s">
-                                <li class="li" onclick="sopMenu()">
-                                    <img src="templateslide/assets/img/banner/mn1.jpg" alt="SOP 1 PTP" class="img-fit">
-                                </li>
-                                <li class="li">
-                                    <img src="templateslide/assets/img/banner/mn2.jpg" alt="SOP 1 PTP" class="img-fit">
-                                </li>
-                                <li class="li">
-                                    <img src="templateslide/assets/img/banner/mn3.jpg" alt="SOP 1 PTP" class="img-fit">
-                                </li>
-                                <li class="li">
-                                    <img src="templateslide/assets/img/banner/menu4.jpg" alt="SOP 1 PTP" class="img-fit">
-                                </li>
-                                <li class="li">
-                                    <img src="templateslide/assets/img/banner/menu6.jpg" alt="SOP 1 PTP" class="img-fit">
-                                </li>
-                                <li class="li" onclick="standarMenu()">
-                                    <img src="templateslide/assets/img/banner/menu5.jpg" alt="SOP 1 PTP" class="img-fit">
-                                </li>
-                            </ul>
+					<div>
+					<a href="tkp">
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						</a>
+						<span class="fl-icon-title">Divisi Teknologi Informasi</span>
+					</div>
 
-                            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-                            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
-                        </div>
-                    </div>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Sekerataris Perusahaan</span>
+					</div>
 
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Perencanaan dan Pengendalian</span>
+					</div>
 
-                    
-                    <!--------Detail Menu---------------------------------------->
-                    <div id="sopMenu" class="ukMenu" style="display:none">
-                        <div style="height:100vh">
-                            <br><br><br>
-                            <div class="uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-2@s uk-text-center uk-grid-collapse" uk-grid>
-                                <div>
-                                    <div class="uk-card uk-card-default uk-card-body fl-box fl-box1">
-                                        <b>SOP 1</b>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Pengadaan</span>
+					</div>
 
-                                        <div class="divTitleBox">
-                                            (Title) Ex Standar Operasional Procedure Operasi Pelabuhan
-                                        </div>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Akuntansi Pajak dan Keuangan</span>
+					</div>
 
-                                        <div>
-                                            <button class="uk-button uk-button-default uk-button-primary fl-button-box">
-                                                Download
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <div class="uk-card uk-card-default uk-card-body fl-box fl-box2">
-                                        <b>SOP 2</b>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Akuntansi Pajak dan Keuangan</span>
+					</div>
 
-                                        <div class="divTitleBox">
-                                            (Title) Ex Standar Operasional Procedure Operasi Terminal
-                                        </div>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Akuntansi Pajak dan Keuangan</span>
+					</div>
 
-                                        <div>
-                                            <button class="uk-button uk-button-default uk-button-primary fl-button-box">
-                                                Download
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <div class="uk-card uk-card-default uk-card-body fl-box fl-box3">
-                                        <b>SOP 3</b>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Akuntansi Manajemen</span>
+					</div>
 
-                                        <div class="divTitleBox">
-                                            (Title) Ex Standar Operasional Procedure Operasi Pelabuhan
-                                        </div>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Pengembangan Bisnis</span>
+					</div>
 
-                                        <div>
-                                            <button class="uk-button uk-button-default uk-button-primary fl-button-box">
-                                                Download
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi QA & SMO</span>
+					</div>
 
-                                <div>
-                                    <div class="uk-card uk-card-default uk-card-body fl-box fl-box4">
-                                        <b>SOP 4</b>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Marketing</span>
+					</div>
 
-                                        <div class="divTitleBox">
-                                            (Title) Ex Standar Operasional Procedure Operasi Pelabuhan
-                                        </div>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Perencanaan dan Pengembangan Operasi</span>
+					</div>
 
-                                        <div>
-                                            <button class="uk-button uk-button-default uk-button-primary fl-button-box">
-                                                Download
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <div class="uk-card uk-card-default uk-card-body fl-box fl-box5">
-                                        
-                                        <b>SOP 5</b>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Fasilitas & Utilitas</span>
+					</div>
 
-                                        <div class="divTitleBox">
-                                            (Title) Ex Standar Operasional Procedure Operasi Pelabuhan
-                                        </div>
-
-                                        <div>
-                                            <button class="uk-button uk-button-default uk-button-primary fl-button-box">
-                                                Download
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <div class="uk-card uk-card-default uk-card-body fl-box fl-box6">
-                                        <b>SOP 6</b>
-
-                                        <div class="divTitleBox">
-                                            (Title) Ex Standar Operasional Procedure Operasi Pelabuhan
-                                        </div>
-
-                                        <div>
-                                            <button class="uk-button uk-button-default uk-button-primary fl-button-box">
-                                                Download
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                  
-                    </div>
-
-
-
-                </div>
-            </div>          
-        </div>
-
-    </div>
+					<div>
+						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+						<span class="fl-icon-title">Divisi Hukum</span>
+					</div>
+				</div>
+			</div>
+			<p class="uk-text-right">
+				<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+			</p>
+		</div>
+	</div>
 </body>
 </html>
 
-
 <script>
-    function sopMenu(){
-        $(".ukMenu").hide();
-        $("#sopMenu").show();
-    }
-
-    function sliderMenu(){
-        $(".ukMenu").hide();
-        $("#sliderMenu").show();
-    }
-
-    function standarMenu(){
-        location.href='/sop';
-    }
-
+	function showModal(){
+		UIkit.modal("#mymodal").show();
+	}
 </script>
