@@ -114,7 +114,7 @@
 										</div>
 
 										<div>
-											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color6">
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color8">
 											    <table>
 													<tr>
 														<td>
@@ -141,7 +141,7 @@
 											</div>
 										</div>
 										<div>
-											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color3">
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color10">
 												<table>
 													<tr>
 														<td>

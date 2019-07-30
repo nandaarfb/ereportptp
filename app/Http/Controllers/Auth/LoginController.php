@@ -205,11 +205,11 @@ class LoginController extends Controller
         {
             // User::where('USER_ID', '=', Auth::user()->USER_ID)->update(['USER_LOGIN_STATUS' => 0]);
             Auth::logout();
-            return Redirect::to('signin');
+            return Redirect::to('login');
         }
         else
         {
-            return Redirect::to('signin');
+            return Redirect::to('login');
         }
     }
 

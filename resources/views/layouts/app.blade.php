@@ -162,7 +162,7 @@
                     {
                         if (arrdata[1] === 'OK') {
                             isiMsg = arrdata[2];
-                            document.location = "/";
+                            document.location = "/dashboard";
                         } else {
                             isiMsg = arrdata[2];
                             swal("", isiMsg, "error");

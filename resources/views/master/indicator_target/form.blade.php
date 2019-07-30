@@ -9,6 +9,7 @@
 <link href="{{ URL::asset('templateslide/assets/uikit/css/uikit.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('templateslide/assets/datepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('templateslide/assets/datepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ URL::asset('EliteAdmin/assets/node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
 
 
@@ -21,6 +22,7 @@
 <script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.marquee.js') }}"></script>
 <script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.pause.js') }}"></script>
 <script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.easing.min.js') }}"></script>
+<script src="{{ URL::asset('EliteAdmin/assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
@@ -58,62 +60,53 @@
 			<div class="fl-title-page" >
 				<span style="font-size:20px">				
 					<img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/sopReadMore.png') }}" width="65" alt="">
-					Master Indicator Target	
-				</span>
-				<span style="float:right;margin-top:15px">
-					<button class="uk-button uk-button-default fl-button" type="button">Sorting</button>
-					<div uk-dropdown="mode: click">
-						<ul class="uk-nav uk-dropdown-nav">
-							<li><a href="#">Divisi</a></li>
-							<li><a href="#">Nama</a></li>
-							<li><a href="#">Nilai</a></li>
-						</ul>
-					</div>
-					<button class="uk-button uk-button-default fl-button" type="button" onclick="showModal()">Filter</button>
-					<a href="form_indicator_target"><button class="uk-button uk-button-primary fl-button" type="button">+</button></a>
+					Master Indicator Target
 				</span>
 			</div>
 			
 			<div class="fl-table">
-				<div class="uk-overflow-auto">
-					<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
-						<thead>
-							<tr class="fl-table-head">
-								<th width="5%"></th>
-								<th width="20%">Indicator Name</th>
-								<th width="20%">Indicator Year</th>
-								<th width="20%">Weight Unit</th>
-								<th width="20%">Weight</th>
-								<th width="20%">Target Unit</th>
-								<th width="20%">Target</th>
-								<th width="20%">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-						@foreach($indicator_target_list as $data)
-								<tr>
-									<td><img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/i1.png') }}" width="45" alt=""></td>
-									<td>{{ $data->INDICATOR_NAME }}</td>
-									<td>{{ $data->INDICATOR_YEAR }}</td>
-									<td>{{ $data->WEIGHT_UNIT }}</td>
-									<td>{{ $data->WEIGHT }}</td>
-									<td>{{ $data->TARGET }}</td>
-									<td>{{ $data->TARGET_UNIT }}</td>
-									<td>
-										<button class="uk-button uk-button-default fl-button" type="button">Action</button>
-										<div uk-dropdown="mode:click">
-											<ul class="uk-nav uk-dropdown-nav">
-												<li><a href="#">Detail</a></li>
-												<li><a href="#">Update</a></li>
-												<li><a href="#">Delete</a></li>
-											</ul>
-										</div>
-									</td>
-								</tr>
-						@endforeach
-						</tbody>
-					</table>
-				</div>	
+				<form id="form_perencanaan" action="/master/indicator_target_save" method="POST">
+				{{ csrf_field() }}
+					<div>
+						<b>Indicator Name</b>
+						<input type="hidden" name="indicatorlisthidden" id="indicatorlisthidden" value="{{ $indicator }}" disabled="disabled"><br>
+						<select class="select2-list" id="indicator_id" name="indicator_id[]">
+							<option value=""></option>
+							@foreach($indicator_list as $indicators)
+								<option value="{{ $indicators['INDICATOR_ID'] }}">{{ $indicators['INDICATOR_NAME'] }}</option>
+							@endforeach
+						</select>
+					<div>
+					<div>
+						<b>Indicator Year</b>
+						<input name="indicator_year" class="uk-input uk-child-width-1-2" type="text" placeholder="Indicator Year">
+					</div>
+					<div>
+						<b>Weight Unit</b>
+						<input name="weight_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight Unit">
+					</div>
+					<div>
+						<b>Weight</b>
+						<input name="weight" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight">
+					</div>
+					<div>
+						<b>Target Unit</b>
+						<input name="target_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Target Unit">
+					</div>
+					<div>
+						<b>Target</b>
+						<input name="target" class="uk-input uk-child-width-1-2" type="text" placeholder="Target">
+					</div>
+					<div>
+						<br>
+					</div>
+					<div>
+						<button class="uk-button uk-button-primary fl-button" onclick="save_indicator_target(this.form.id);return false;">
+							<i class="fa fa-plus"></i>&nbsp;Save
+						</button>
+					</div>
+					
+				</form>
 			</div>
 
 		</div>	
@@ -160,4 +153,48 @@
 	function showModal(){
 		UIkit.modal("#mymodal").show();
 	}
+
+	function save_indicator_target(formid)
+    {   
+		submit_form(formid);
+    }
+
+	$(".select2").select2();
+	$(".ajax").select2({
+            ajax: {
+                url: "https://api.github.com/search/repositories",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term, // search term
+                        page: params.page
+                    };
+                },
+                processResults: function (data, params) {
+                    // parse the results into the format expected by Select2
+                    // since we are using custom formatting functions we do not need to
+                    // alter the remote JSON data, except to indicate that infinite
+                    // scrolling can be used
+                    params.page = params.page || 1;
+                    return {
+                        results: data.items,
+                        pagination: {
+                            more: (params.page * 30) < data.total_count
+                        }
+                    };
+                },
+                cache: true
+            },
+            escapeMarkup: function (markup) {
+                return markup;
+            }, // let our custom formatter work
+            minimumInputLength: 1,
+            //templateResult: formatRepo, // omitted for brevity, see the source of this page
+            //templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+        });
+    });
+	$(".select2-list").select2({
+            allowClear: true
+        });
 </script>

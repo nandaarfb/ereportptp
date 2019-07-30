@@ -54,11 +54,13 @@
 									<div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-1-3@m uk-child-width-1-2@s">
 										
 										<div>
-											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color1">
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color11">
 												<table>
 													<tr>
 														<td>
-															<img src="templateslide/assets/img/image/indikator.jpg" class="fl-image-figure" onclick="showModal()">
+															<a href="/master/indicator_list">
+																<img src="templateslide/assets/img/image/indikator.jpg" class="fl-image-figure">
+															</a>
 														</td>
 													</tr>
 												</table>								    
@@ -66,11 +68,13 @@
 										</div>
 
 										<div>
-											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color3">
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color12">
 											    <table>
 													<tr>
 														<td>
-															<img src="templateslide/assets/img/image/bobot.jpg" class="fl-image-figure" onclick="showModal()">																											
+															<a href="/master/indicator_target_list">
+																<img src="templateslide/assets/img/image/bobot.jpg" class="fl-image-figure">
+															</a>		
 														</td>
 													</tr>
 												</table>
@@ -78,7 +82,7 @@
 										</div>
 
 										<div>
-											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color4">
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color14">
 											   <table>
 													<tr>
 														<td>
@@ -90,7 +94,7 @@
 										</div>
 
 										<div>
-											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color2">
+											<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color13">
 											    <table>
 													<tr>
 														<td>

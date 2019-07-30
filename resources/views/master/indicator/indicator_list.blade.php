@@ -70,7 +70,7 @@
 						</ul>
 					</div>
 					<button class="uk-button uk-button-default fl-button" type="button" onclick="showModal()">Filter</button>
-					<button class="uk-button uk-button-primary fl-button" type="button" onclick="{{ url('master/form_indicator') }}">+</button>
+					<a href="form_indicator"><button class="uk-button uk-button-primary fl-button" type="button">+</button></a>
 				</span>
 			</div>
 			

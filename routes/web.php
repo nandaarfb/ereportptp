@@ -17,15 +17,13 @@ Route::get('/signup','Auth\LoginController@signup');
 Route::get('/signin','Auth\LoginController@login');
 Route::post('/postlogin','Auth\LoginController@postLogin');
 // Route::middleware(['auth'])->group(function(){
-    Route::get('/home', function () {
-        return view('index');
-    });
+    // Route::get('/home', function () {
+    //     return view('index');
+    // });
 
-    Route::get('/master_menu', 'MasterController@master_menu');
-
-    Route::post('/postlogin','Auth\LoginController@postLogin');
-    
-    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    Route::get('/master_menu', 'MasterController@master_menu');    
+    // Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    Route::get('dashboard', ['as'=>'dashboard', 'uses'=>'HomeController@index']);
     
     // view sementara
     Route::get('/sarmut', function () {
@@ -47,8 +45,19 @@ Route::post('/postlogin','Auth\LoginController@postLogin');
         return view('sop.sop');
     });
     
+    // Master
+    // Master Indicator
     Route::get('/master/indicator_list', 'MasterController@indicator_list');
     Route::get('/master/form_indicator', 'MasterController@form_indicator');
+    Route::post('/master/indicator_save', 'MasterController@save_indicator');
+    Route::post('/master/indicator_delete', 'MasterController@delete_indicator');
 
+    // Master Indicator Target
     Route::get('/master/indicator_target_list', 'MasterController@indicator_target_list');
+    Route::get('/master/form_indicator_target', 'MasterController@form_indicator_target');
+    Route::post('/master/indicator_target_save', 'MasterController@save_indicator_target');
+    Route::post('/master/indicator_target_delete', 'MasterController@delete_indicator_target');
+
+    Route::get('/logout', 'Auth\LoginController@logout');
+
 // });

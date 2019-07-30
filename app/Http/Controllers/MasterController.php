@@ -85,12 +85,15 @@ class MasterController extends Controller
 
     public function form_indicator_target(Request $request)
     {
-        $indicator      = Indicator::all()->toArray();
+        $indicator_list      = Indicator::all()->toArray();
         $now            = Carbon::now();
+        $indicator = '';
+        // dd($indicator);
         
         return view('master.indicator_target.form', [
                         'now'                   => $now,
                         'indicator'             => $indicator,
+                        'indicator_list'             => $indicator_list,
         ]);
     }
 
@@ -126,6 +129,18 @@ class MasterController extends Controller
         return redirect('/master/indicator_list');
     }
 
+    public function delete_indicator(Request $request)
+    {
+        // $user_id            = Auth::user()->id;
+        $indicator_id       = $request->indicator_id;
+        $sub_indicator_id   = $request->sub_indicator_id;
+        self::delete_sub_indicator($sub_indicator_id);
+
+        Indicator::where('INDICATOR_ID',$indicator_id)->delete();
+
+        return redirect('/master/indicator_target_list');
+    }
+
     public function save_subindicator(Request $request)
     {
         $sub_indicator_name     = $request->sub_indicator_name;
@@ -140,10 +155,18 @@ class MasterController extends Controller
         return redirect('/master/indicator_list');
     }
 
+    public function delete_sub_indicator(Request $request)
+    {
+        // $user_id            = Auth::user()->id;
+        $sub_indicator_id       = $request->sub_indicator_id;
+
+        Sub_Indicator::where('SUB_INDICATOR_ID',$sub_indicator_id)->delete();
+    }
+
     public function save_indicator_target(Request $request)
     {
-        $user_id            = Auth::user()->id;
-        $indicator_id       = $request->indicator_id;
+        // $user_id            = Auth::user()->id;
+        $indicator_id       = $request->indicator_id[0];
         $indicator_year     = $request->indicator_year;
         $weight_unit        = $request->weight_unit;
         $weight             = $request->weight;
@@ -159,6 +182,16 @@ class MasterController extends Controller
         $item->TARGET_UNIT = $target_unit;
         $item->save();
 
-        return redirect('/master/indicator_list');
+        return redirect('/master/indicator_target_list');
+    }
+
+    public function delete_indicator_target(Request $request)
+    {
+        // $user_id            = Auth::user()->id;
+        $indicator_target_id       = $request->indicator_target_id;
+
+        Indicator_Target::where('INDICATOR_TARGET_ID',$indicator_target_id)->delete();
+
+        return redirect('/master/indicator_target_list');
     }
 }
