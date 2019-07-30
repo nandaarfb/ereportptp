@@ -16,7 +16,7 @@ Route::get('/login','Auth\LoginController@login');
 Route::get('/signup','Auth\LoginController@signup');
 Route::get('/signin','Auth\LoginController@login');
 Route::post('/postlogin','Auth\LoginController@postLogin');
-// Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function(){
     // Route::get('/home', function () {
     //     return view('index');
     // });
@@ -60,4 +60,4 @@ Route::post('/postlogin','Auth\LoginController@postLogin');
 
     Route::get('/logout', 'Auth\LoginController@logout');
 
-// });
+});

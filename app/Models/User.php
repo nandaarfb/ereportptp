@@ -19,7 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'NIPP', 'NAMA', 'ID_JABATAN', 'KELAS', 'PASSWORD', 'TIPE', 'ACCESS', 'photo', 'STATUS', 'TGL_PENSIUN', 'ENCPASS'
     ];
-
+    protected $primaryKey = 'ID';
     /**
      * The attributes that should be hidden for arrays.
      *
