@@ -1,189 +1,243 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
-<!-- Mirrored from eliteadmin.themedesigner.in/demos/bt4/eliteadmin/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Mar 2019 16:28:24 GMT -->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Login E-Report</title>
-    
-    <!-- page css -->
-    <link href="{{ asset('EliteAdmin/dist/css/pages/login-register-lock.css') }}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{ asset('EliteAdmin/dist/css/style.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
-    
-    
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-</head>
-
-<body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    <div class="preloader">
-        <div class="loader">
-            <div class="loader__figure"></div>
-            <p class="loader__label">E-Report</p>
-        </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar" style="background-image:url(../../img/dash.jpg);">
-        <div class="login-box card">
-            <div class="card-body">
-                <form class="form-horizontal form-material text-center" id="loginform" action="postlogin" method="POST">
-                    <a href="javascript:void(0)" class="db"><img src="{{ asset('img/logoeproc.png') }}" alt="Home" width="200" height="100"/></a>
-                    <div class="form-group m-t-40">
-                        <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" name="email" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" name="password" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <div class="d-flex no-block align-items-center">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Remember me</label>
-                                </div> 
-                                <div class="ml-auto">
-                                    <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> Forgot pwd?</a> 
-                                </div>
-                            </div>   
-                        </div>
-                    </div>
-                    <div class="form-group text-center m-t-20">
-                        <div class="col-xs-12">
-                            <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" onclick="act_login();return false;">Log In</button>
-                        </div>
-                    </div>
-                    <!-- <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                            <div class="social">
-                                <button class="btn  btn-facebook" data-toggle="tooltip" title="Login with Facebook"> <i aria-hidden="true" class="fab fa-facebook-f"></i> </button>
-                                <button class="btn btn-googleplus" data-toggle="tooltip" title="Login with Google"> <i aria-hidden="true" class="fab fa-google-plus-g"></i> </button>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="form-group m-b-0">
-                        <div class="col-sm-12 text-center">
-                            Bersedia Menjadi Penyedia? <a href="{{ url('/signup') }}" class="text-info m-l-5"><b>Bergabung</b></a>
-                        </div>
-                    </div>
-                </form>
-                <form class="form-horizontal" id="recoverform" action="http://eliteadmin.themedesigner.in/demos/bt4/eliteadmin/index.html">
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <h3>Recover Password</h3>
-                            <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
-                        </div>
-                    </div>
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group text-center m-t-20">
-                        <div class="col-xs-12">
-                            <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="{{ asset('EliteAdmin/assets/node_modules/jquery/jquery-3.2.1.min.js') }}"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{ asset('EliteAdmin/assets/node_modules/popper/popper.min.js') }}"></script>
-    <script src="{{ asset('EliteAdmin/assets/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert.min.js') }}" type="text/javascript"></script>
-    <!--Custom JavaScript -->
-    <script type="text/javascript">
-        $(function() {
-            $(".preloader").fadeOut();
-        });
-        $(function() {
-            $('[data-toggle="tooltip"]').tooltip()
-        });
-        // ============================================================== 
-        // Login and Recover Password 
-        // ============================================================== 
-        $('#to-recover').on("click", function() {
-            $("#loginform").slideUp();
-            $("#recoverform").fadeIn();
-        });
-
-        // ============================================================== 
-        // Login Action
-        // ============================================================== 
-        function act_login() {
-            var form = $('form#loginform');
-            var formData = new FormData(form[0]);
-            $.ajax({
-                type: form.attr("method"),
-                url: form.attr("action"),
-                data: formData,
-                headers: {
-			        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			    },
-                async: false,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(data){
-                    var isiMsg = '';
-                    var arrdata = data.split('#');
-                    if (arrdata[0].trim()==='MSG')
-                    {
-                        if (arrdata[1] === 'OK') {
-                            isiMsg = arrdata[2];
-                            document.location = "/dashboard";
-                        } else {
-                            isiMsg = arrdata[2];
-                            swal("", isiMsg, "error");
-                        }
-                    }
-                    else 
-                    {
-                        swal("", data, "error");
-                    }
-                },
-                error: function(error){
-                    console.log(error);
-                    swal("", "Failed. Something went wrong, please try again later.", "error");
-                    // alert("Failed. Something went wrong, please try again later.");
-                }
-            });
-        }
-    </script>
-    
-</body>
-
-
-<!-- Mirrored from eliteadmin.themedesigner.in/demos/bt4/eliteadmin/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Mar 2019 16:28:24 GMT -->
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4
+Version: 5.0.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<html lang="en" >
+	<!-- begin::Head -->
+	<head>
+		<meta charset="utf-8" />
+		<title>
+			E-Report Pelabuhan Tanjung Priok
+		</title>
+		<meta name="description" content="Latest updates and statistic charts">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!--begin::Web font -->
+		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+		<script>
+          WebFont.load({
+            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+          });
+		</script>
+		<!--end::Web font -->
+        <!--begin::Base Styles -->
+		<link href="{{ asset('metronic2/assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('metronic2/assets/demo/default/base/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+		<!--end::Base Styles -->
+		<link rel="shortcut icon" href="{{ asset('metronic2/assets/demo/default/media/img/logo/favicon.ico') }}" />
+	</head>
+	<!-- end::Head -->
+    <!-- end::Body -->
+	<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
+		<!-- begin:: Page -->
+		<div class="m-grid m-grid--hor m-grid--root m-page">
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--singin" id="m_login">
+				<div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
+					<div class="m-stack m-stack--hor m-stack--desktop">
+						<div class="m-stack__item m-stack__item--fluid">
+							<div class="m-login__wrapper">
+								<div class="m-login__logo">
+									<a href="#">
+										<img src="{{ asset('templateslide/assets/img/logo/ptp.png') }}" width="200" height="100"> 
+									</a>
+								</div>
+								<div class="m-login__signin">
+									<div class="m-login__head">
+										<h3 class="m-login__title">
+											E-Report Pelabuhan Tanjung Priok
+										</h3>
+									</div>
+									<form class="m-login__form m-form" id="loginform" action="postlogin" method="POST">
+										<div class="form-group m-form__group">
+											<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+										</div>
+										<div class="form-group m-form__group">
+											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
+										</div>
+										<div class="row m-login__form-sub">
+											<div class="col m--align-left">
+												<label class="m-checkbox m-checkbox--focus">
+													<input type="checkbox" name="remember">
+													Remember me
+													<span></span>
+												</label>
+											</div>
+											<div class="col m--align-right">
+												<a href="javascript:;" id="m_login_forget_password" class="m-link">
+													Forget Password ?
+												</a>
+											</div>
+										</div>
+										<div class="m-login__form-action">
+											<button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" onclick="act_login();return false;">
+												Sign In
+											</button>
+										</div>
+									</form>
+								</div>
+								<div class="m-login__signup">
+									<div class="m-login__head">
+										<h3 class="m-login__title">
+											Sign Up
+										</h3>
+										<div class="m-login__desc">
+											Enter your details to create your account:
+										</div>
+									</div>
+									<form class="m-login__form m-form" action="">
+										<div class="form-group m-form__group">
+											<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">
+										</div>
+										<div class="form-group m-form__group">
+											<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+										</div>
+										<div class="form-group m-form__group">
+											<input class="form-control m-input" type="password" placeholder="Password" name="password">
+										</div>
+										<div class="form-group m-form__group">
+											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword">
+										</div>
+										<div class="row form-group m-form__group m-login__form-sub">
+											<div class="col m--align-left">
+												<label class="m-checkbox m-checkbox--focus">
+													<input type="checkbox" name="agree">
+													I Agree the
+													<a href="#" class="m-link m-link--focus">
+														terms and conditions
+													</a>
+													.
+													<span></span>
+												</label>
+												<span class="m-form__help"></span>
+											</div>
+										</div>
+										<div class="m-login__form-action">
+											<button id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+												Sign Up
+											</button>
+											<button id="m_login_signup_cancel" class="btn btn-outline-focus  m-btn m-btn--pill m-btn--custom">
+												Cancel
+											</button>
+										</div>
+									</form>
+								</div>
+								<div class="m-login__forget-password">
+									<div class="m-login__head">
+										<h3 class="m-login__title">
+											Forgotten Password ?
+										</h3>
+										<div class="m-login__desc">
+											Enter your email to reset your password:
+										</div>
+									</div>
+									<form class="m-login__form m-form" action="">
+										<div class="form-group m-form__group">
+											<input class="form-control m-input" type="text" placeholder="Email" name="email" id="m_email" autocomplete="off">
+										</div>
+										<div class="m-login__form-action">
+											<button id="m_login_forget_password_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+												Request
+											</button>
+											<button id="m_login_forget_password_cancel" class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom">
+												Cancel
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="m-stack__item m-stack__item--center">
+							<div class="m-login__account">
+								<!-- <span class="m-login__account-msg">
+									Don't have an account yet ?
+								</span>
+								&nbsp;&nbsp;
+								<a href="javascript:;" id="m_login_signup" class="m-link m-link--focus m-login__account-link">
+									Sign Up
+								</a> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url(templateslide/assets/img/background/b2.jpg)">
+					<div class="m-grid__item m-grid__item--middle">
+						<!-- <h3 class="m-login__welcome">
+							Join Our Community
+						</h3>
+						<p class="m-login__msg">
+							Lorem ipsum dolor sit amet, coectetuer adipiscing
+							<br>
+							elit sed diam nonummy et nibh euismod
+						</p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end:: Page -->
+    	<!--begin::Base Scripts -->
+		<script src="{{ asset('metronic2/assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
+		<script src="{{ asset('metronic2/assets/demo/default/base/scripts.bundle.js') }}" type="text/javascript"></script>
+		<!--end::Base Scripts -->   
+        <!--begin::Page Snippets -->
+		<script src="{{ asset('metronic2/assets/snippets/pages/user/login.js') }}" type="text/javascript"></script>
+		<script type="text/javascript">
+			// ============================================================== 
+			// Login Action
+			// ============================================================== 
+			function act_login() {
+				var form = $('form#loginform');
+				var formData = new FormData(form[0]);
+				$.ajax({
+					type: form.attr("method"),
+					url: form.attr("action"),
+					data: formData,
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					},
+					async: false,
+					cache: false,
+					contentType: false,
+					processData: false,
+					success: function(data){
+						var isiMsg = '';
+						var arrdata = data.split('#');
+						if (arrdata[0].trim()==='MSG')
+						{
+							if (arrdata[1] === 'OK') {
+								isiMsg = arrdata[2];
+								document.location = "/dashboard";
+							} else {
+								isiMsg = arrdata[2];
+								swal("", isiMsg, "error");
+							}
+						}
+						else 
+						{
+							swal("", data, "error");
+						}
+					},
+					error: function(error){
+						console.log(error);
+						swal("", "Failed. Something went wrong, please try again later.", "error");
+						// alert("Failed. Something went wrong, please try again later.");
+					}
+				});
+			}
+		</script>
+		<!--end::Page Snippets -->
+	</body>
+	<!-- end::Body -->
 </html>

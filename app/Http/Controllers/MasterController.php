@@ -50,22 +50,19 @@ class MasterController extends Controller
         ]);
     }
 
-    public function indicator_target_list(Request $request)
+    public function sub_indicator_list(Request $request)
     {
         // $indicator_list = array();
-        $items = \DB::table('tm_indicator_target as t')
-                    ->leftJoin('tm_indicator as i', 'i.INDICATOR_ID', '=' , 't.INDICATOR_ID')
-                    ->select('i.INDICATOR_NAME as INDICATOR_NAME', 't.INDICATOR_YEAR as INDICATOR_YEAR', 't.WEIGHT_UNIT as WEIGHT_UNIT', 't.WEIGHT as WEIGHT', 't.TARGET as TARGET', 't.TARGET_UNIT as TARGET_UNIT');
-        $indicator_target_list = $items->get();
+        $sub_indicator_list = Sub_Indicator::all()->toArray();
         $now            = Carbon::now();
-        // dd($indicator_list);
+        // dd($sub_indicator_list);
         
-        return view('master.indicator_target.indicator_target_list', [
+        return view('master.sub_indicator.sub_indicator_list', [
                         'now'                   => $now,
-                        'indicator_target_list'        => $indicator_target_list,
+                        'sub_indicator_list'        => $sub_indicator_list,
         ]);
     }
-
+    
     public function form_indicator(Request $request)
     {
         $period_list         = Period::all()->toArray();
@@ -80,6 +77,15 @@ class MasterController extends Controller
                         'period_list'                => $period_list,
                         'sub_division_list'     => $sub_division_list,
                         'sub_division'          => $sub_division,
+        ]);
+    }
+
+    public function form_sub_indicator(Request $request)
+    {
+        $now            = Carbon::now();
+        
+        return view('master.sub_indicator.form', [
+                        'now'                   => $now,
         ]);
     }
 
@@ -141,7 +147,7 @@ class MasterController extends Controller
         return redirect('/master/indicator_target_list');
     }
 
-    public function save_subindicator(Request $request)
+    public function save_sub_indicator(Request $request)
     {
         $sub_indicator_name     = $request->sub_indicator_name;
         $sub_unit               = $request->sub_unit;
@@ -152,7 +158,7 @@ class MasterController extends Controller
         $item->UNIT = $sub_unit;
         $item->save();
 
-        return redirect('/master/indicator_list');
+        return redirect('/master/sub_indicator_list');
     }
 
     public function delete_sub_indicator(Request $request)

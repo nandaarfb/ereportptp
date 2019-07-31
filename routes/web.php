@@ -58,6 +58,12 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/master/indicator_target_save', 'MasterController@save_indicator_target');
     Route::post('/master/indicator_target_delete', 'MasterController@delete_indicator_target');
 
+    // Master Sub Indicator
+    Route::get('/master/sub_indicator_list', 'MasterController@sub_indicator_list');
+    Route::get('/master/form_sub_indicator', 'MasterController@form_sub_indicator');
+    Route::post('/master/sub_indicator_save', 'MasterController@save_sub_indicator');
+    Route::post('/master/sub_indicator_delete', 'MasterController@delete_sub_indicator');
+
     Route::get('/logout', 'Auth\LoginController@logout');
 
 });

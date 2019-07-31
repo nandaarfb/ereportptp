@@ -61,7 +61,8 @@
 					Master Indicator	
 				</span>
 				<span style="float:right;margin-top:15px">
-					<button class="uk-button uk-button-default fl-button" type="button">Sorting</button>
+					<a href="sub_indicator_list"><button class="uk-button uk-button-default fl-button" type="button">Sub Indicator</button></a>
+					<button class="uk-button uk-button-primary fl-button" type="button">Sorting</button>
 					<div uk-dropdown="mode: click">
 						<ul class="uk-nav uk-dropdown-nav">
 							<li><a href="#">Divisi</a></li>
