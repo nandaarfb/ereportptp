@@ -50,6 +50,22 @@ class MasterController extends Controller
         ]);
     }
 
+    public function indicator_target_list(Request $request)
+    {
+        // $indicator_list = array();
+        $items = \DB::table('tm_indicator_target as t')
+                    ->leftJoin('tm_indicator as i', 'i.INDICATOR_ID', '=' , 't.INDICATOR_ID')
+                    ->select('i.INDICATOR_NAME as INDICATOR_NAME', 't.INDICATOR_YEAR as INDICATOR_YEAR', 't.WEIGHT_UNIT as WEIGHT_UNIT', 't.WEIGHT as WEIGHT', 't.TARGET as TARGET', 't.TARGET_UNIT as TARGET_UNIT');
+        $indicator_target_list = $items->get();
+        $now            = Carbon::now();
+        // dd($indicator_list);
+        
+        return view('master.indicator_target.indicator_target_list', [
+                        'now'                   => $now,
+                        'indicator_target_list'        => $indicator_target_list,
+        ]);
+    }
+
     public function sub_indicator_list(Request $request)
     {
         // $indicator_list = array();
