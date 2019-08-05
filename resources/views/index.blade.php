@@ -41,6 +41,7 @@
 							</span>
 
 							<span class="fl-menu-tool">
+								<a href="logout"><button class="uk-button uk-button-danger fl-button" type="button">Logout</button></a>
 								<input type="button" class="uk-button uk-button-primary fl-button" value="menu">
 							</span>
 						</div>	

@@ -82,8 +82,8 @@ License: You must have a valid license purchased only from themeforest(the above
 											</div>
 										</div>
 										<div class="m-login__form-action">
-											<button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" onclick="act_login();return false;">
-												Sign In
+											<button id="m_login_signin_submit" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air" onclick="act_login();return false;">
+												Sign In⚓
 											</button>
 										</div>
 									</form>
