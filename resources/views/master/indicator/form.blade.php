@@ -11,20 +11,6 @@
 <link href="{{ URL::asset('templateslide/assets/datepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('EliteAdmin/assets/node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
-
-
-<script src="{{ URL::asset('templateslide/assets/js/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ URL::asset('templateslide/assets/uikit/js/uikit.js') }}"></script>
-
-<script src="{{ URL::asset('templateslide/assets/datepicker/moment.min.js') }}"></script>
-<script src="{{ URL::asset('templateslide/assets/datepicker/daterangepicker.js') }}"></script>
-
-<script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.marquee.js') }}"></script>
-<script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.pause.js') }}"></script>
-<script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.easing.min.js') }}"></script>
-<script src="{{ URL::asset('EliteAdmin/assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
 
 <style>
@@ -69,17 +55,17 @@
 					<div>
 						<b>Sub Division</b>
 						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $sub_division }}" disabled="disabled"><br>
-						<select id="sub_division_list" name="sub_division_list[]">
-							<option value=""></option>
-							@foreach($sub_division_list as $subdivision)
-								<option value="{{ $subdivision['SUB_DIVISION_ID'] }}">{{ $subdivision['SUB_DIVISION_NAME'] }}</option>
-							@endforeach
-						</select>
+                        <select id="sub_division_list" class="form-control select2-list" name="sub_division_list[]">
+                            <option value=""></option>
+                            @foreach($sub_division_list as $subdivision)
+                                <option value="{{ $subdivision['SUB_DIVISION_ID'] }}">{{ $subdivision['SUB_DIVISION_NAME'] }}</option>
+                            @endforeach
+                        </select>
 					<div>
 					<div>
 						<b>Period Name</b>
 						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $period }}" disabled="disabled"><br>
-						<select id="period_list" name="period_list[]">
+						<select class="form-control select2-list" id="period_list" name="period_list[]">
 							<option value=""></option>
 							@foreach($period_list as $periods)
 								<option value="{{ $periods['PERIOD_ID'] }}">{{ $periods['PERIOD_NAME'] }}</option>
@@ -101,6 +87,8 @@
 					<div>
 						<br>
 					</div>
+						
+
 					<div>
 						<input type="button" class="uk-button uk-button-primary fl-button" value="Save">
 					</div>
@@ -111,83 +99,29 @@
 		</div>	
 	</div>
 
+@push('jspage')
+<script src="{{ URL::asset('templateslide/assets/js/jquery-1.11.1.min.js') }}"></script>
+<script src="{{ URL::asset('templateslide/assets/uikit/js/uikit.js') }}"></script>
 
-	<!-- This is the modal -->
-	<div id="mymodal" uk-modal >
-		<div class="uk-modal-dialog uk-modal-body">
-			<div>
-				<div uk-grid class="uk-grid-small uk-child-width-1-2 uk-child-width-1-4@m uk-child-width-1-2@s" align="left	">
-					<div>
-						<b>Nama</b>
-						<input class="uk-input" type="text" placeholder="Masukan Nama">
-					</div>
-					
-					<div>
-						<b>Divisi</b>
-						<input class="uk-input" type="text" placeholder="Masukan Divisi">
-					</div>
+<script src="{{ URL::asset('templateslide/assets/datepicker/moment.min.js') }}"></script>
+<script src="{{ URL::asset('templateslide/assets/datepicker/daterangepicker.js') }}"></script>
 
-					<div>
-						<b>Indikator</b>
-						<input class="uk-input" type="text" placeholder="Indikator">
-					</div>
+<script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.marquee.js') }}"></script>
+<script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.pause.js') }}"></script>
+<script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.easing.min.js') }}"></script>
+<script src="{{ URL::asset('js/form-repeater.js') }}"></script>
+<script src="{{ URL::asset('EliteAdmin/assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
 
-					<div>
-						<b>Nilai</b>
-						<input class="uk-input" type="text" placeholder="Masukan Nilai">
-						<div style="padding-top:10px" align="right">
-							<button class="uk-button uk-button-primary fl-button" type="button">Search</button>			
-						</div>			
-					</div>
-				</div>
-			</div>
-	</div>
-</body>
-</html>
-
-
-
-
-<script>
+<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+<script type="text/javascript">
 	function showModal(){
 		UIkit.modal("#mymodal").show();
 	}
-	$(".select2").select2();
-	$(".ajax").select2({
-            ajax: {
-                url: "https://api.github.com/search/repositories",
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        q: params.term, // search term
-                        page: params.page
-                    };
-                },
-                processResults: function (data, params) {
-                    // parse the results into the format expected by Select2
-                    // since we are using custom formatting functions we do not need to
-                    // alter the remote JSON data, except to indicate that infinite
-                    // scrolling can be used
-                    params.page = params.page || 1;
-                    return {
-                        results: data.items,
-                        pagination: {
-                            more: (params.page * 30) < data.total_count
-                        }
-                    };
-                },
-                cache: true
-            },
-            escapeMarkup: function (markup) {
-                return markup;
-            }, // let our custom formatter work
-            minimumInputLength: 1,
-            //templateResult: formatRepo, // omitted for brevity, see the source of this page
-            //templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
-        });
-    });
 	$(".select2-list").select2({
             allowClear: true
         });
 </script>
+@endpush
+	
+</body>
+</html>
