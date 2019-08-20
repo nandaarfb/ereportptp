@@ -7,7 +7,8 @@ use App\Models\Indicator_Target;
 use App\Models\Sub_Indicator;
 use App\Models\Period;
 use App\Models\Sub_Division;
-
+use App\Models\Organisasi;
+use App\Models\Master_User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -79,6 +80,32 @@ class MasterController extends Controller
         ]);
     }
     
+    public function organization_structure_list(Request $request)
+    {
+        // $indicator_list = array();
+        $organisasi_list = Organisasi::all()->toArray();
+        $now            = Carbon::now();
+        // dd($sub_indicator_list);
+        
+        return view('master.organization_structure.organization_structure_list', [
+                        'now'                   => $now,
+                        'organization_structure_list'        => $organisasi_list,
+        ]);
+    }
+
+    public function master_user_list(Request $request)
+    {
+        /// $indicator_list = array();
+        $master_user_list = Master_User::all()->toArray();
+        $now            = Carbon::now();
+        // dd($sub_indicator_list);
+        
+        return view('master.master_user.master_user_list', [
+                        'now'                   => $now,
+                        'master_user_list'        => $master_user_list,
+        ]);
+    }
+
     public function form_indicator(Request $request)
     {
         $period_list         = Period::all()->toArray();
@@ -119,6 +146,16 @@ class MasterController extends Controller
         ]);
     }
 
+    public function form_organization_structure(Request $request)
+    {
+       //
+    }
+
+    public function form_master_user(Request $request)
+    {
+       //
+    }
+
     public function save_indicator(Request $request)
     {
         $user_id            = Auth::user()->id;
@@ -150,6 +187,7 @@ class MasterController extends Controller
 
         return redirect('/master/indicator_list');
     }
+
 
     public function delete_indicator(Request $request)
     {
@@ -215,5 +253,25 @@ class MasterController extends Controller
         Indicator_Target::where('INDICATOR_TARGET_ID',$indicator_target_id)->delete();
 
         return redirect('/master/indicator_target_list');
+    }
+
+    public function save_organization_structure(Request $request)
+    {
+        //
+    }
+
+    public function delete_organization_structure(Request $request)
+    {
+        //
+    }
+
+    public function save_master_user(Request $request)
+    {
+        //
+    }
+
+    public function delete_master_user(Request $request)
+    {
+        //
     }
 }
