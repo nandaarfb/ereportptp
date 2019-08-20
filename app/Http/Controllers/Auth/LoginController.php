@@ -65,7 +65,7 @@ class LoginController extends Controller
             }
             else
             {
-                return 'MSG#ERR#Login gagal. Password Anda salah.';
+                return 'MSG#ERR#Login gagal. Password Anda salah. xxx'.Auth::attempt($credentials);
             }
             // }
         }

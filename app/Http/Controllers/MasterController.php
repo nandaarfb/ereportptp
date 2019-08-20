@@ -7,7 +7,8 @@ use App\Models\Indicator_Target;
 use App\Models\Sub_Indicator;
 use App\Models\Period;
 use App\Models\Sub_Division;
-
+use App\Models\Organisasi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -79,6 +80,38 @@ class MasterController extends Controller
         ]);
     }
     
+    public function organization_structure_list(Request $request)
+    {
+        $items = \DB::table('tx_organization_structure as os')
+                    ->leftJoin('tm_branch_office as b', 'b.BRANCH_OFFICE_ID', '=' , 'os.BRANCH_OFFICE_ID')
+                    ->leftJoin('tm_division as d', 'd.DIVISION_ID', '=' , 'os.DIVISION_ID')
+                    ->leftJoin('tm_sub_division as sd', 'sd.SUB_DIVISION_ID', '=' , 'os.SUB_DIVISION_ID')
+                    ->select('os.ORGANIZATION_STRUCTURE_ID', 'b.BRANCH_OFFICE_NAME', 
+                             'os.DIVISION_ID', 'd.DIVISION_NAME',
+                             'os.SUB_DIVISION_ID', 'sd.SUB_DIVISION_NAME', 
+                             'os.ACTIVE');
+        $organisasi_list = $items->get();
+        $now            = Carbon::now();
+        
+        return view('master.organization_structure.organization_structure_list', [
+                        'now'                   => $now,
+                        'organization_structure_list'        => $organisasi_list,
+        ]);
+    }
+
+    public function master_user_list(Request $request)
+    {
+        /// $indicator_list = array();
+        $master_user_list = User::all()->toArray();
+        $now            = Carbon::now();
+        // dd($master_user_list);
+        
+        return view('master.master_user.master_user_list', [
+                        'now'                   => $now,
+                        'master_user_list'        => $master_user_list,
+        ]);
+    }
+
     public function form_indicator(Request $request)
     {
         $period_list         = Period::all()->toArray();
@@ -119,6 +152,37 @@ class MasterController extends Controller
         ]);
     }
 
+    public function form_organization_structure(Request $request)
+    {
+        $items = \DB::table('tx_organization_structure as os')
+        ->leftJoin('tm_branch_office as b', 'b.BRANCH_OFFICE_ID', '=' , 'os.BRANCH_OFFICE_ID')
+        ->select('os.ORGANIZATION_STRUCTURE_ID', 'b.BRANCH_OFFICE_NAME');
+        $organisasi_list = $items->get();
+        $now            = Carbon::now();
+        $organisasi     = '';
+        //  dd($organisasi_list);
+        
+        return view('master.organization_structure.form', [
+                        'now'                   => $now,
+                        'organisasi'            => $organisasi,
+                        'organization_structure'             => $organisasi_list,
+        ]);
+    }
+
+    public function form_master_user(Request $request)
+    {
+        $master_user_list      = User::all()->toArray();
+        $now            = Carbon::now();
+        $user = '';
+        // dd($organisasi;
+        
+        return view('master.master_user.form', [
+                        'now'                   => $now,
+                        'user'             => $user,
+                        'master_user_list'        => $master_user_list,
+        ]);
+    }
+
     public function save_indicator(Request $request)
     {
         $user_id            = Auth::user()->id;
@@ -150,6 +214,7 @@ class MasterController extends Controller
 
         return redirect('/master/indicator_list');
     }
+
 
     public function delete_indicator(Request $request)
     {
@@ -215,5 +280,61 @@ class MasterController extends Controller
         Indicator_Target::where('INDICATOR_TARGET_ID',$indicator_target_id)->delete();
 
         return redirect('/master/indicator_target_list');
+    }
+
+    public function save_organization_structure(Request $request)
+    {
+        // $user_id            = Auth::user()->id;
+        $branch_office       = $request->branch_office[0];
+        $division            = $request->division;
+        $sub_division        = $request->sub_division;
+        $active              = $request->active;
+
+        $item = new Organisasi;
+        $item->BRANCH_OFFICE_NAME = $branch_office;
+        $item->DIVISION_NAME = $division;
+        $item->SUB_DIVISION_NAME = $sub_division;
+        $item->ACTIVE = $active;
+        $item->save();
+
+        return redirect('/master/organization_structure_list');
+    }
+
+    public function delete_organization_structure(Request $request)
+    {
+        //
+    }
+
+    public function save_master_user(Request $request)
+    {
+        // $user_id            = Auth::user()->id;
+        $id_jabatan    = $request->id_jabatan;
+        $nipp          = $request->nipp;
+        $kelas     = $request->kelas;
+        $nama            = $request->nama;
+        $tipe          = $request->tipe;
+        $access             = $request->access;
+        $status             = $request->status;
+        $tgl_pensiun             = $request->tgl_pensiun;
+        // $encpass             = $request->encpass;
+
+        $item = new User;
+        $item->ID_JABATAN  = $id_jabatan;
+        $item->NIPP = $nipp;
+        $item->KELAS = $kelas;
+        $item->NAMA = $nama;
+        $item->TIPE = $tipe;
+        $item->ACCESS = $access;
+        $item->STATUS = $active;
+        $item->TGL_PENSIUN = $tgl_pensiun;
+        // $item->ENCPASS = $encpass;
+        $item->save();
+
+        return redirect('/master/master_user');
+    }
+
+    public function delete_master_user(Request $request)
+    {
+        //
     }
 }

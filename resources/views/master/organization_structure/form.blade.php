@@ -60,101 +60,59 @@
 			<div class="fl-title-page" >
 				<span style="font-size:20px">				
 					<img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/sopReadMore.png') }}" width="65" alt="">
-					Master Indicator Target
+					Master Organisasi
 				</span>
 			</div>
-			
+
 			<div class="fl-table">
-				<form id="form_perencanaan" action="/master/indicator_target_save" method="POST">
+				<form id="form_blade" action="/master/organization_structure_save" method="POST">
 				{{ csrf_field() }}
 					<div>
-						<b>Indicator Name</b>
-						<input type="hidden" name="indicatorlisthidden" id="indicatorlisthidden" value="{{ $indicator }}" disabled="disabled"><br>
-						<select class="select2-list" id="indicator_id" name="indicator_id[]">
+						<b>Branch Office</b>
+						<input type="hidden" name="branchofficehidden" id="branchofficehidden" value="{{ $organisasi }}" disabled="disabled"><br>
+						<select class="select2-list" id="branch_office_id" name="branch_office_id[]">
 							<option value=""></option>
-							@foreach($indicator_list as $indicators)
-								<option value="{{ $indicators['INDICATOR_ID'] }}">{{ $indicators['INDICATOR_NAME'] }}</option>
+							@foreach($organization_structure as $organization)
+								<option value="{{ $organization->BRANCH_OFFICE_NAME }}">{{ $organization->BRANCH_OFFICE_NAME }}</option>
 							@endforeach
 						</select>
 					<div>
-					<div> 
-						<b>Indicator Year</b>
-						<input name="indicator_year" class="uk-input uk-child-width-1-2" type="text" placeholder="Indicator Year">
-					</div>
-					<div>
-						<b>Weight Unit</b>
-						<input name="weight_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight Unit">
-					</div>
-					<div>
-						<b>Weight</b>
-						<input name="weight" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight">
-					</div>
-					<div>
-						<b>Target Unit</b>
-						<input name="target_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Target Unit">
-					</div>
-					<div>
-						<b>Target</b>
-						<input name="target" class="uk-input uk-child-width-1-2" type="text" placeholder="Target">
-					</div>
+						<div> 
+							<b>Division</b>
+							<input name="division" class="uk-input uk-child-width-1-2" type="text" placeholder="Division">
+						</div>
+						<div>
+							<b>Sub Division</b>
+							<input name="sub_division" class="uk-input uk-child-width-1-2" type="text" placeholder="Sub Division">
+						</div>
+						<div>
+							<b>Active</b>
+							<input name="active" class="uk-input uk-child-width-1-2" type="text" placeholder="Active">
+						</div>
 					<div>
 						<br>
 					</div>
-					<div>
-						<button class="uk-button uk-button-primary fl-button" onclick="save_indicator_target(this.form.id);return false;">
-							<i class="fa fa-plus"></i>&nbsp;Save
-						</button>
-					</div>
-					
+						<div>
+							<button class="uk-button uk-button-primary fl-button" onclick="save_organization_structure(this.form.id);return false;">
+								<i class="fa fa-plus"></i>&nbsp;Save
+							</button>
+						</div>					
 				</form>
 			</div>
 
 		</div>	
 	</div>
 
-
-	<!-- This is the modal -->
-	<div id="mymodal" uk-modal >
-		<div class="uk-modal-dialog uk-modal-body">
-			<div>
-				<div uk-grid class="uk-grid-small uk-child-width-1-2 uk-child-width-1-4@m uk-child-width-1-2@s" align="left	">
-					<div>
-						<b>Nama</b>
-						<input class="uk-input" type="text" placeholder="Masukan Nama">
-					</div>
-					
-					<div>
-						<b>Divisi</b>
-						<input class="uk-input" type="text" placeholder="Masukan Divisi">
-					</div>
-
-					<div>
-						<b>Indikator</b>
-						<input class="uk-input" type="text" placeholder="Indikator">
-					</div>
-
-					<div>
-						<b>Nilai</b>
-						<input class="uk-input" type="text" placeholder="Masukan Nilai">
-						<div style="padding-top:10px" align="right">
-							<button class="uk-button uk-button-primary fl-button" type="button">Search</button>			
-						</div>			
-					</div>
-				</div>
-			</div>
-	</div>
+</div>	
 </body>
-</html>
-
-
-
+<html>
 
 <script>
 	function showModal(){
 		UIkit.modal("#mymodal").show();
 	}
 
-	function save_indicator_target(formid)
+	function save_organization_structure(formid)
     {   
 		submit_form(formid);
     }
@@ -195,5 +153,6 @@
         });
     });
 	$(".select2-list").select2({
+            allowClear: true
         });
 </script>

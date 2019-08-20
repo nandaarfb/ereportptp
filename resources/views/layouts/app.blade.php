@@ -62,7 +62,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 									<form class="m-login__form m-form" id="loginform" action="postlogin" method="POST">
 										<div class="form-group m-form__group">
-											<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+											<input class="form-control m-input" type="text" name="email" autocomplete="off">
 										</div>
 										<div class="form-group m-form__group">
 											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
@@ -221,7 +221,8 @@ License: You must have a valid license purchased only from themeforest(the above
 								document.location = "/dashboard";
 							} else {
 								isiMsg = arrdata[2];
-								swal("", isiMsg, "error");
+								// swal("", isiMsg, "error");
+								console.log(isiMsg);
 							}
 						}
 						else 

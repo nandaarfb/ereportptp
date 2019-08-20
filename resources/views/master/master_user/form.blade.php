@@ -60,101 +60,86 @@
 			<div class="fl-title-page" >
 				<span style="font-size:20px">				
 					<img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/sopReadMore.png') }}" width="65" alt="">
-					Master Indicator Target
+					Master User
 				</span>
 			</div>
-			
+
 			<div class="fl-table">
-				<form id="form_perencanaan" action="/master/indicator_target_save" method="POST">
+				<form id="form_blade" action="/master/master_user_save" method="POST">
 				{{ csrf_field() }}
 					<div>
-						<b>Indicator Name</b>
-						<input type="hidden" name="indicatorlisthidden" id="indicatorlisthidden" value="{{ $indicator }}" disabled="disabled"><br>
-						<select class="select2-list" id="indicator_id" name="indicator_id[]">
+						<b>Id jabatan</b>
+						<input type="hidden" name="idjabatanhidden" id="bidjabatanhidden" value="{{ $user }}" disabled="disabled"><br>
+						<select class="select2-list" id="user_id" name="user_id[]">
 							<option value=""></option>
-							@foreach($indicator_list as $indicators)
-								<option value="{{ $indicators['INDICATOR_ID'] }}">{{ $indicators['INDICATOR_NAME'] }}</option>
+							@foreach($master_user_list as $users)
+								<option value="{{ $users['ID_JABATAN'] }}">{{ $users['ID_JABATAN'] }}</option>
 							@endforeach
 						</select>
 					<div>
-					<div> 
-						<b>Indicator Year</b>
-						<input name="indicator_year" class="uk-input uk-child-width-1-2" type="text" placeholder="Indicator Year">
+						<div>
+						<b>Id Jabatan</b>
+						<input class="uk-input uk-child-width-1-2" name="id_jabatan" type="text" placeholder="Id Jabatan">
+					</div>
+					
+					<div>
+						<b>Nipp</b>
+ 						<input class="uk-input uk-child-width-1-2" name="nipp" type="text" placeholder="Nipp">
+					</div>
+
+					<div>
+						<b>Kelas</b>
+						<input class="uk-input uk-child-width-1-2" name="kelas" type="text" placeholder="Kelas">
 					</div>
 					<div>
-						<b>Weight Unit</b>
-						<input name="weight_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight Unit">
+						<b>Nama</b>
+						<input class="uk-input uk-child-width-1-2" name="nama" type="text" placeholder="Nama">
 					</div>
 					<div>
-						<b>Weight</b>
-						<input name="weight" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight">
+						<b>Tipe</b>
+						<input class="uk-input uk-child-width-1-2" name="tipe" type="text" placeholder="Tipe">
 					</div>
 					<div>
-						<b>Target Unit</b>
-						<input name="target_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Target Unit">
+						<b>Access</b>
+						<input class="uk-input uk-child-width-1-2" name="access" type="text" placeholder="Access">
 					</div>
 					<div>
-						<b>Target</b>
-						<input name="target" class="uk-input uk-child-width-1-2" type="text" placeholder="Target">
+						<b>Status</b>
+						<input class="uk-input uk-child-width-1-2" name="status" type="text" placeholder="Status">
 					</div>
+					<div>
+						<b>Tanggal Pensiun</b>
+						<input class="uk-input uk-child-width-1-2" name="tgl_pensiun" placeholder="Tanggal Pensiun">
+					</div>
+					<!-- <div>
+						<b>Encpass</b>
+						<input class="uk-input uk-child-width-1-2" name="encpass" placeholder="Encpass">
+					</div> -->
 					<div>
 						<br>
 					</div>
-					<div>
-						<button class="uk-button uk-button-primary fl-button" onclick="save_indicator_target(this.form.id);return false;">
-							<i class="fa fa-plus"></i>&nbsp;Save
-						</button>
-					</div>
-					
+						<div>
+							<button class="uk-button uk-button-primary fl-button" onclick="save_master_user(this.form.id);return false;">
+								<i class="fa fa-plus"></i>&nbsp;Save
+							</button>
+						</div>					
 				</form>
 			</div>
 
 		</div>	
 	</div>
 
-
-	<!-- This is the modal -->
-	<div id="mymodal" uk-modal >
-		<div class="uk-modal-dialog uk-modal-body">
-			<div>
-				<div uk-grid class="uk-grid-small uk-child-width-1-2 uk-child-width-1-4@m uk-child-width-1-2@s" align="left	">
-					<div>
-						<b>Nama</b>
-						<input class="uk-input" type="text" placeholder="Masukan Nama">
-					</div>
-					
-					<div>
-						<b>Divisi</b>
-						<input class="uk-input" type="text" placeholder="Masukan Divisi">
-					</div>
-
-					<div>
-						<b>Indikator</b>
-						<input class="uk-input" type="text" placeholder="Indikator">
-					</div>
-
-					<div>
-						<b>Nilai</b>
-						<input class="uk-input" type="text" placeholder="Masukan Nilai">
-						<div style="padding-top:10px" align="right">
-							<button class="uk-button uk-button-primary fl-button" type="button">Search</button>			
-						</div>			
-					</div>
-				</div>
-			</div>
-	</div>
+</div>
+		</div>	
 </body>
-</html>
-
-
-
+<html>
 
 <script>
 	function showModal(){
 		UIkit.modal("#mymodal").show();
 	}
 
-	function save_indicator_target(formid)
+	function save_master_user(formid)
     {   
 		submit_form(formid);
     }
@@ -195,5 +180,6 @@
         });
     });
 	$(".select2-list").select2({
+            allowClear: true
         });
 </script>

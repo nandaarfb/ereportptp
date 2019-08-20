@@ -41,7 +41,7 @@
 							</span>
 
 							<span class="fl-menu-tool">
-								<input type="button" class="uk-button uk-button-primary fl-button" value="menu">
+								<input type="button" class="uk-button uk-button-primary	 fl-button" value="menu">
 							</span>
 						</div>	
 					</div>
@@ -86,7 +86,8 @@
 											   <table>
 													<tr>
 														<td>
-															<img src="templateslide/assets/img/image/organisasi.jpg" class="fl-image-figure" onclick="showModal()">																											
+															<a href="/master/organization_structure">
+																<img src="templateslide/assets/img/image/organisasi.jpg" class="fl-image-figure"></a>
 														</td>
 													</tr>
 												</table>
@@ -98,7 +99,8 @@
 											    <table>
 													<tr>
 														<td>
-															<img src="templateslide/assets/img/image/user.jpg" class="fl-image-figure" onclick="showModal()">																											
+														<a href="/master/master_user">
+															<img src="templateslide/assets/img/image/user.jpg" class="fl-image-figure"></a>																											
 														</td>
 													</tr>
 												</table>
