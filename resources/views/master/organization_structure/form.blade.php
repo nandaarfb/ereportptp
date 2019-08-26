@@ -63,6 +63,7 @@
 					Master Organisasi
 				</span>
 			</div>
+<<<<<<< HEAD
 
 			<div class="fl-table">
 				<form id="form_blade" action="/master/organization_structure_save" method="POST">
@@ -156,3 +157,8 @@
             allowClear: true
         });
 </script>
+=======
+		</div>	
+</body>
+<html>
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94

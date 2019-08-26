@@ -4,7 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>PT. Pelabuhan Tanjung Priuk</title>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 <link href="{{ URL::asset('templateslide/assets/css/style.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('templateslide/assets/css/imagehover/imagehover.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('templateslide/assets/uikit/css/uikit.css') }}" rel="stylesheet" type="text/css">
@@ -24,10 +27,13 @@
 <script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.easing.min.js') }}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+<<<<<<< HEAD
 
 <!-- datatable -->
 <link rel="stylesheet" href="{{ URL::asset('templateslide/assets/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css">
 <script src="{{ URL::asset('templateslide/assets/js/jquery.dataTables.min.js') }}"></script>
+=======
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 </head>
 
 <style>
@@ -62,7 +68,11 @@
 			<div class="fl-title-page" >
 				<span style="font-size:20px">				
 					<img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/sopReadMore.png') }}" width="65" alt="">
+<<<<<<< HEAD
 					Master User
+=======
+					Master Organization Structure
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 				</span>
 
 			<span style="float:right;margin-top:15px">
@@ -75,30 +85,49 @@
 					</ul>
 				</div>
 				<button class="uk-button uk-button-default fl-button" type="button" onclick="showModal()">Filter</button>
+<<<<<<< HEAD
 				<a href="form_master_user"><button class="uk-button uk-button-primary fl-button" type="button">+</button></a>
+=======
+				<a href="form_indicator_target"><button class="uk-button uk-button-primary fl-button" type="button">+</button></a>
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 			</span>
 		</div>
 
 
 			<div class="fl-table">
 				<div class="uk-overflow-auto">
+<<<<<<< HEAD
 					<table class="uk-table uk-table-hover uk-table-middle uk-table-divider" id='table_user'>
+=======
+					<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 						<thead>
 							<tr class="fl-table-head">
 								<th width="5%"></th>
 								<th>Id Jabatan</th>
 								<th>Nipp</th>
+<<<<<<< HEAD
 								<th>Kelas</th>
 								<th>Nama</th>
+=======
+								<th>kelas</th>
+								<th>Nama</th>
+								<th>Password</th>
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 								<th>Tipe</th>
 								<th>Access</th>
 								<th>Status</th>
 								<th>tgl_Pensiun</th>
+<<<<<<< HEAD
+=======
+								<th>Encpass</th>
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 							</tr>
 						</thead>
 
 						<tbody>
 						@foreach($master_user_list as $data)
+<<<<<<< HEAD
 						<tr>
 							<th width="5%"></th>
 							<th>{{$data['ID_JABATAN']}}</th>
@@ -110,6 +139,9 @@
 							<td>{{$data['STATUS'] }}</td>
 							<td>{{$data['TGL_PENSIUN'] }}</td>
 						</tr>
+=======
+				
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 						@endforeach
 						</tbody>
 					</table>
@@ -118,6 +150,7 @@
 
 		</div>	
 	</div>
+<<<<<<< HEAD
 
 	<!-- This is the modal -->
 	<div id="mymodal" uk-modal >
@@ -149,10 +182,13 @@
 				</div>
 			</div>
 	</div>
+=======
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 </body>
 </html>
 
 
+<<<<<<< HEAD
 <script>
 $(document).ready( function () {
     $('#table_user').DataTable();
@@ -162,3 +198,5 @@ $(document).ready( function () {
 		UIkit.modal("#mymodal").show();
 	}
 </script>
+=======
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94

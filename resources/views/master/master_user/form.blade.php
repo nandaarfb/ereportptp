@@ -63,6 +63,7 @@
 					Master User
 				</span>
 			</div>
+<<<<<<< HEAD
 
 			<div class="fl-table">
 				<form id="form_blade" action="/master/master_user_save" method="POST">
@@ -183,3 +184,8 @@
             allowClear: true
         });
 </script>
+=======
+		</div>	
+</body>
+<html>
+>>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
