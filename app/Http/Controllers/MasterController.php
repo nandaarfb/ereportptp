@@ -7,6 +7,9 @@ use App\Models\Indicator_Target;
 use App\Models\Sub_Indicator;
 use App\Models\Period;
 use App\Models\Sub_Division;
+use App\Models\Organisasi;
+
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -102,6 +105,44 @@ class MasterController extends Controller
         ]);
     }
     
+    public function organization_structure_list(Request $request)
+    {
+
+        $items = \DB::table('tx_organization_structure as os')
+                    ->leftJoin('tm_branch_office as b', 'b.BRANCH_OFFICE_ID', '=' , 'os.BRANCH_OFFICE_ID')
+                    ->leftJoin('tm_division as d', 'd.DIVISION_ID', '=' , 'os.DIVISION_ID')
+                    ->leftJoin('tm_sub_division as sd', 'sd.SUB_DIVISION_ID', '=' , 'os.SUB_DIVISION_ID')
+                    ->select('os.ORGANIZATION_STRUCTURE_ID', 'b.BRANCH_OFFICE_NAME', 
+                             'os.DIVISION_ID', 'd.DIVISION_NAME',
+                             'os.SUB_DIVISION_ID', 'sd.SUB_DIVISION_NAME', 
+                             'os.ACTIVE');
+        $organisasi_list = $items->get();
+        $now            = Carbon::now();
+        
+        return view('master.organization_structure.organization_structure_list', [
+                        'now'                   => $now,
+                        'organization_structure_list'        => $organisasi_list,
+        ]);
+    }
+
+    public function master_user_list(Request $request)
+    {
+        /// $indicator_list = array();
+
+        $master_user_list = User::all()->toArray();
+        $now            = Carbon::now();
+        // dd($master_user_list);
+
+        // dd($sub_indicator_list);
+
+
+        
+        return view('master.master_user.master_user_list', [
+                        'now'                   => $now,
+                        'master_user_list'        => $master_user_list,
+        ]);
+    }
+
     public function form_indicator(Request $request)
     {
         $period_list         = Period::all()->toArray();
@@ -202,6 +243,7 @@ class MasterController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
     public function form_edit_indicator_target(Request $request)
     {
         $items = Indicator_Target::where('INDICATOR_TARGET_ID', $request->id)->first();
@@ -230,6 +272,54 @@ class MasterController extends Controller
         ]);
     }
     
+=======
+    public function form_organization_structure(Request $request)
+    {
+
+        $branch = \DB::table('tm_branch_office') ->select('BRANCH_OFFICE_ID', 'BRANCH_OFFICE_NAME');
+        $branch_list = $branch->get();
+        
+        $division = \DB::table('tm_division') ->select('DIVISION_ID', 'DIVISION_NAME');
+        $division_list = $division->get();
+
+        $sub_division = \DB::table('tm_sub_division') ->select('SUB_DIVISION_ID', 'SUB_DIVISION_NAME');
+        $sub_division_list = $sub_division->get();
+
+        $now            = Carbon::now();
+        $organisasi     = '';
+        //  dd($organisasi_list);
+        
+        return view('master.organization_structure.form', [
+                        'now'                   => $now,
+                        'organisasi'            => $organisasi,
+                        'branch'                => $branch_list,
+                        'division'              => $division_list,
+                        'sub_division'              => $sub_division_list,
+        ]);
+
+       //
+
+    }
+
+    public function form_master_user(Request $request)
+    {
+
+        $master_user_list      = User::all()->toArray();
+        $now            = Carbon::now();
+        $user = '';
+        // dd($organisasi;
+        
+        return view('master.master_user.form', [
+                        'now'                   => $now,
+                        'user'             => $user,
+                        'master_user_list'        => $master_user_list,
+        ]);
+
+       //
+
+    }
+
+>>>>>>> f5708245d213c5169bd976fa5131a883387b2635
     public function save_indicator(Request $request)
     {
         $sub_division_id    = $request->sub_division_list[0];
@@ -255,7 +345,12 @@ class MasterController extends Controller
         return redirect('/master/indicator_list');
     }
 
+<<<<<<< HEAD
     public function edit_indicator(Request $request)
+=======
+
+    public function delete_indicator(Request $request)
+>>>>>>> f5708245d213c5169bd976fa5131a883387b2635
     {
         $sub_division_id    = $request->sub_division_list[0];
         $period_id          = $request->period_list[0];
@@ -372,5 +467,70 @@ class MasterController extends Controller
         Indicator_Target::where('INDICATOR_TARGET_ID',$request->id)->delete();
 
         return redirect('/master/indicator_target_list');
+    }
+
+    public function save_organization_structure(Request $request)
+    {
+
+        // $user_id            = Auth::user()->id;
+        $branch_office       = $request->branch_office_id;
+        $division            = $request->division;
+        $sub_division        = $request->sub_division;
+        $active              = $request->active;
+
+        $item = new Organisasi;
+        $item->BRANCH_OFFICE_ID = $branch_office;
+        $item->DIVISION_ID = $division;
+        $item->SUB_DIVISION_ID = $sub_division;
+        $item->ACTIVE = $active;
+        $item->save();
+
+        return redirect('/master/organization_structure');
+
+        //
+
+    }
+
+    public function delete_organization_structure(Request $request)
+    {
+        //
+    }
+
+    public function save_master_user(Request $request)
+    {
+
+        // $user_id            = Auth::user()->id;
+        $id_jabatan    = $request->id_jabatan;
+        $nipp          = $request->nipp;
+        $kelas     = $request->kelas;
+        $nama            = $request->nama;
+        $tipe          = $request->tipe;
+        $access             = $request->access;
+        $status             = $request->status;
+        $tgl_pensiun             = $request->tgl_pensiun;
+        // $encpass             = $request->encpass;
+
+        $item = new User;
+        $item->ID_JABATAN  = $id_jabatan;
+        $item->NIPP = $nipp;
+        $item->KELAS = $kelas;
+        $item->NAMA = $nama;
+        $item->TIPE = $tipe;
+        $item->ACCESS = $access;
+        $item->STATUS = $status;
+        $item->TGL_PENSIUN = $tgl_pensiun;
+        // $item->ENCPASS = $encpass;
+        $item->save();
+
+        return redirect('/master/master_user');
+
+        //
+
+        
+    }
+
+    public function delete_master_user(Request $request)
+    {
+        //
     }
 }

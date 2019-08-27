@@ -85,6 +85,18 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/master/sub_indicator_edit', 'MasterController@edit_sub_indicator');
     Route::get('/master/sub_indicator_delete/{id}', 'MasterController@delete_sub_indicator');
 
+     // Master Orgnization Structure
+     Route::get('/master/organization_structure', 'MasterController@organization_structure_list');
+     Route::get('/master/form_organization_structure', 'MasterController@form_organization_structure');
+     Route::post('/master/organization_structure_save', 'MasterController@save_organization_structure');
+     Route::post('/master/organization_structure_delete', 'MasterController@delete_organization_structure');
+
+     // Master User
+     Route::get('/master/master_user', 'MasterController@master_user_list');
+     Route::get('/master/form_master_user', 'MasterController@form_master_user');
+     Route::post('/master/master_user_save', 'MasterController@save_master_user');
+     Route::post('/master/master_user_delete', 'MasterController@delete_master_user');
+
     Route::get('/logout', 'Auth\LoginController@logout');
 
 });

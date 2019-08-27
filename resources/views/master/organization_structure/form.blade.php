@@ -12,23 +12,19 @@
 <link href="{{ URL::asset('EliteAdmin/assets/node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
 
-<!-- metronic -->
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-<script>
-  WebFont.load({
-    google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
-    active: function() {
-        sessionStorage.fonts = true;
-    }
-  });
-</script>
-<!--end::Web font -->
-<!--begin::Base Styles -->
-<link href="{{ URL::asset('metronic2/assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('metronic2/assets/demo/default/base/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 
-<link rel="shortcut icon" href="{{ URL::asset('metronic2/assets/demo/default/media/img/logo/favicon.ico') }}" />
-<!-- metronic -->
+<script src="{{ URL::asset('templateslide/assets/js/jquery-1.11.1.min.js') }}"></script>
+<script src="{{ URL::asset('templateslide/assets/uikit/js/uikit.js') }}"></script>
+
+<script src="{{ URL::asset('templateslide/assets/datepicker/moment.min.js') }}"></script>
+<script src="{{ URL::asset('templateslide/assets/datepicker/daterangepicker.js') }}"></script>
+
+<script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.marquee.js') }}"></script>
+<script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.pause.js') }}"></script>
+<script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.easing.min.js') }}"></script>
+<script src="{{ URL::asset('EliteAdmin/assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
 
 <style>
@@ -36,9 +32,6 @@
 		margin-top:70px !important;
 		width:900px !important;
 		border-radius: 10px;
-	}
-	body{
-		background-color: #283a5a;
 	}
 </style>
 
@@ -67,101 +60,68 @@
 			<div class="fl-title-page" >
 				<span style="font-size:20px">				
 					<img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/sopReadMore.png') }}" width="65" alt="">
-					Master Indicator Target
+					Master Organisasi
 				</span>
 			</div>
-			
+
+
 			<div class="fl-table">
-				<form id="form_perencanaan" action="/master/indicator_target_save" method="POST">
+				<form id="form_blade" action="/master/organization_structure_save" method="POST">
 				{{ csrf_field() }}
 					<div>
-						<b>Indicator Name</b>
-						<input type="hidden" name="indicatorlisthidden" id="indicatorlisthidden" value="{{ $indicator }}" disabled="disabled"><br>
-                        <select id="indicator_id" class="form-control select2-list" name="indicator_id[]">
-                            <option value="">--Sub Division--</option>
-                            @foreach($indicator_list as $indicators)
-                                <option value="{{ $indicators['INDICATOR_ID'] }}">{{ $indicators['INDICATOR_NAME'] }}</option>
-                            @endforeach
-                        </select>
+						<b>Branch Office</b>
+						<input type="hidden" name="branchofficehidden" id="branchofficehidden" value="{{ $organisasi }}" disabled="disabled"><br>
+						<select class="select2-list" id="branch_office_id" name="branch_office_id">
+							@foreach($branch as $organization)
+								<option value="{{ $organization->BRANCH_OFFICE_ID }}">{{ $organization->BRANCH_OFFICE_NAME }}</option>
+							@endforeach
+						</select>
 					<div>
-					<div> 
-						<b>Indicator Year</b>
-						<input name="indicator_year" class="uk-input uk-child-width-1-2" type="text" placeholder="Indicator Year">
-					</div>
-					<div>
-						<b>Weight Unit</b>
-						<input name="weight_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight Unit">
-					</div>
-					<div>
-						<b>Weight</b>
-						<input name="weight" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight">
-					</div>
-					<div>
-						<b>Target Unit</b>
-						<input name="target_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Target Unit">
-					</div>
-					<div>
-						<b>Target</b>
-						<input name="target" class="uk-input uk-child-width-1-2" type="text" placeholder="Target">
-					</div>
+					<b>Division</b>
+						<input type="hidden" name="divisionhidden" id="divisionhidden" value="{{ $organisasi }}" disabled="disabled"><br>
+						<select class="select2-list" id="division" name="division">
+							@foreach($division as $organization)
+								<option value="{{ $organization->DIVISION_ID }}">{{ $organization->DIVISION_NAME }}</option>
+							@endforeach
+						</select>
+						<div>
+							<b>Sub Division</b>
+							<input type="hidden" name="sub_divisionhidden" id="sub_divisionhidden" value="{{ $organisasi }}" disabled="disabled"><br>
+							<select class="select2-list" id="sub_division" name="sub_division">
+								@foreach($sub_division as $organization)
+									<option value="{{ $organization->SUB_DIVISION_ID }}">{{ $organization->SUB_DIVISION_NAME }}</option>
+								@endforeach
+						</select>
+						</div>
+
+						<div>
+							<b>Active</b>
+							<input name="active" class="uk-input uk-child-width-1-2" type="text" placeholder="Active">
+						</div>
 					<div>
 						<br>
 					</div>
-					<div>
-						<button class="uk-button uk-button-primary fl-button" onclick="save_indicator_target(this.form.id);return false;">
-							<i class="fa fa-plus"></i>&nbsp;Save
-						</button>
-					</div>
-					
+						<div>
+							<button class="uk-button uk-button-primary fl-button" onclick="save_organization_structure(this.form.id);return false;">
+								<i class="fa fa-plus"></i>&nbsp;Save
+							</button>
+						</div>					
 				</form>
 			</div>
 
 		</div>	
 	</div>
 
-
-	<!-- This is the modal -->
-	<div id="mymodal" uk-modal >
-		<div class="uk-modal-dialog uk-modal-body">
-			<div>
-				<div uk-grid class="uk-grid-small uk-child-width-1-2 uk-child-width-1-4@m uk-child-width-1-2@s" align="left	">
-					<div>
-						<b>Nama</b>
-						<input class="uk-input" type="text" placeholder="Masukan Nama">
-					</div>
-					
-					<div>
-						<b>Divisi</b>
-						<input class="uk-input" type="text" placeholder="Masukan Divisi">
-					</div>
-
-					<div>
-						<b>Indikator</b>
-						<input class="uk-input" type="text" placeholder="Indikator">
-					</div>
-
-					<div>
-						<b>Nilai</b>
-						<input class="uk-input" type="text" placeholder="Masukan Nilai">
-						<div style="padding-top:10px" align="right">
-							<button class="uk-button uk-button-primary fl-button" type="button">Search</button>			
-						</div>			
-					</div>
-				</div>
-			</div>
-	</div>
+</div>	
 </body>
-</html>
-
-
-
+<html>
 
 <script>
 	function showModal(){
 		UIkit.modal("#mymodal").show();
 	}
 
-	function save_indicator_target(formid)
+	function save_organization_structure(formid)
     {   
 		submit_form(formid);
     }
@@ -202,5 +162,11 @@
         });
     });
 	$(".select2-list").select2({
+            allowClear: true
         });
 </script>
+
+		</div>	
+</body>
+<html>
+
