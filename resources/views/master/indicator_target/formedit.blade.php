@@ -72,37 +72,38 @@
 			</div>
 			
 			<div class="fl-table">
-				<form id="form_perencanaan" action="/master/indicator_target_save" method="POST">
+				<form id="form_perencanaan" action="/master/indicator_target_edit" method="POST">
 				{{ csrf_field() }}
+				<input type="hidden" name="id" id="id" value="{{ $id }}">
 					<div>
 						<b>Indicator Name</b>
 						<input type="hidden" name="indicatorlisthidden" id="indicatorlisthidden" value="{{ $indicator }}" disabled="disabled"><br>
                         <select id="indicator_id" class="form-control select2-list" name="indicator_id[]">
                             <option value="">--Sub Division--</option>
                             @foreach($indicator_list as $indicators)
-                                <option value="{{ $indicators['INDICATOR_ID'] }}">{{ $indicators['INDICATOR_NAME'] }}</option>
+                                <option value="{{ $indicators['INDICATOR_ID'] }}" {{ $selectedindicator == $indicators['INDICATOR_ID'] ? 'selected="selected"' : '' }}>{{ $indicators['INDICATOR_NAME'] }}</option>
                             @endforeach
                         </select>
 					<div>
 					<div>
 						<b>Indicator Year</b>
-						<input name="indicator_year" class="uk-input uk-child-width-1-2" type="text" placeholder="Indicator Year">
+						<input name="indicator_year" class="uk-input uk-child-width-1-2" type="text" value="{{ $indicator_year }}" placeholder="Indicator Year">
 					</div>
 					<div>
 						<b>Weight Unit</b>
-						<input name="weight_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight Unit">
+						<input name="weight_unit" class="uk-input uk-child-width-1-2" type="text" value="{{ $weight_unit }}" placeholder="Weight Unit">
 					</div>
 					<div>
 						<b>Weight</b>
-						<input name="weight" class="uk-input uk-child-width-1-2" type="text" placeholder="Weight">
+						<input name="weight" class="uk-input uk-child-width-1-2" type="text" value="{{ $weight }}" placeholder="Weight">
 					</div>
 					<div>
 						<b>Target Unit</b>
-						<input name="target_unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Target Unit">
+						<input name="target_unit" class="uk-input uk-child-width-1-2" type="text" value="{{ $target_unit }}" placeholder="Target Unit">
 					</div>
 					<div>
 						<b>Target</b>
-						<input name="target" class="uk-input uk-child-width-1-2" type="text" placeholder="Target">
+						<input name="target" class="uk-input uk-child-width-1-2" type="text" value="{{ $target }}" placeholder="Target">
 					</div>
 					<div>
 						<br>

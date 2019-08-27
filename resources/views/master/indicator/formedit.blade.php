@@ -73,15 +73,16 @@
 			</div>
 			
 			<div class="fl-table">
-				<form id="form_indicator" action="/master/indicator_save" method="POST">
+				<form id="form_indicator" action="/master/indicator_edit" method="POST">
 				{{ csrf_field() }}
+				<input type="hidden" name="id" id="id" value="{{ $id }}">
 					<div>
 						<b>Sub Division</b>
 						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $sub_division }}" disabled="disabled"><br>
                         <select id="sub_division_list" class="form-control select2-list" name="sub_division_list[]">
                             <option value="">--Sub Division--</option>
                             @foreach($sub_division_list as $subdivision)
-                                <option value="{{ $subdivision['SUB_DIVISION_ID'] }}">{{ $subdivision['SUB_DIVISION_NAME'] }}</option>
+                                <option value="{{ $subdivision['SUB_DIVISION_ID'] }}" {{ $selectedsd == $subdivision['SUB_DIVISION_ID'] ? 'selected="selected"' : '' }}>{{ $subdivision['SUB_DIVISION_NAME'] }}</option>
                             @endforeach
                         </select>
 					<div>
@@ -91,21 +92,21 @@
 						<select class="form-control select2-list" id="period_list" name="period_list[]">
 							<option value="">--Period Name--</option>
 							@foreach($period_list as $periods)
-								<option value="{{ $periods['PERIOD_ID'] }}">{{ $periods['PERIOD_NAME'] }}</option>
+								<option value="{{ $periods['PERIOD_ID'] }}" {{ $selectedperiod == $periods['PERIOD_ID'] ? 'selected="selected"' : '' }}>{{ $periods['PERIOD_NAME'] }}</option>
 							@endforeach
 						</select>
 					<div>
 					<div>
 						<b>Indicator Name</b>
-						<input name="indicator_name" class="uk-input uk-child-width-1-2" type="text" placeholder="Indicator Name">
+						<input name="indicator_name" class="uk-input uk-child-width-1-2" type="text" value="{{ $indicator_name }}" placeholder="Indicator Name">
 					</div>
 					<div>
 						<b>Unit Measurement</b>
-						<input name="unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Unit">
+						<input name="unit" class="uk-input uk-child-width-1-2" type="text" value="{{ $unit }}" placeholder="Unit">
 					</div>
 					<div>
 						<b>Formula</b>
-						<input id="formula" name="formula" class="uk-input uk-child-width-1-2" type="text" placeholder="Formula">
+						<input id="formula" name="formula" class="uk-input uk-child-width-1-2" value="{{ $formula }}" type="text" placeholder="Formula">
 						<div id="m_repeater_3" style="padding-top: 10px;">
 							<div class="form-group  m-form__group row">
 								<div data-repeater-list="" class="col-lg-12">

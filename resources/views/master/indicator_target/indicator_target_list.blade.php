@@ -103,9 +103,8 @@
 										<button class="uk-button uk-button-default fl-button" type="button">Action</button>
 										<div uk-dropdown="mode:click">
 											<ul class="uk-nav uk-dropdown-nav">
-												<li><a href="#">Detail</a></li>
-												<li><a href="#">Update</a></li>
-												<li><a href="#">Delete</a></li>
+												<li><a href="edit/form_indicator_target/{{ $data->INDICATOR_TARGET_ID }}">Detail</a></li>
+												<li><a href="indicator_target_delete/{{ $data->INDICATOR_TARGET_ID }}">Delete</a></li>
 											</ul>
 										</div>
 									</td>

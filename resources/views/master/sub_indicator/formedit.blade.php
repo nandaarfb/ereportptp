@@ -9,6 +9,7 @@
 <link href="{{ URL::asset('templateslide/assets/uikit/css/uikit.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('templateslide/assets/datepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('templateslide/assets/datepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ URL::asset('EliteAdmin/assets/node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
 
 
@@ -21,6 +22,7 @@
 <script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.marquee.js') }}"></script>
 <script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.pause.js') }}"></script>
 <script src="{{ URL::asset('templateslide/assets/js/marquee/jquery.easing.min.js') }}"></script>
+<script src="{{ URL::asset('EliteAdmin/assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
@@ -60,52 +62,30 @@
 					<img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/sopReadMore.png') }}" width="65" alt="">
 					Master Sub Indicator	
 				</span>
-				<span style="float:right;margin-top:15px">
-					<a href="indicator_list"><button class="uk-button uk-button-default fl-button" type="button">Indicator</button></a>
-					<button class="uk-button uk-button-primary fl-button" type="button">Sorting</button>
-					<div uk-dropdown="mode: click">
-						<ul class="uk-nav uk-dropdown-nav">
-							<li><a href="#">Divisi</a></li>
-							<li><a href="#">Nama</a></li>
-							<li><a href="#">Nilai</a></li>
-						</ul>
-					</div>
-					<button class="uk-button uk-button-default fl-button" type="button" onclick="showModal()">Filter</button>
-					<a href="form_sub_indicator"><button class="uk-button uk-button-primary fl-button" type="button">+</button></a>
-				</span>
 			</div>
 			
 			<div class="fl-table">
-				<div class="uk-overflow-auto">
-					<table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
-						<thead>
-							<tr class="fl-table-head">
-								<th width="5%"></th>
-								<th width="50%">Sub Indicator Name</th>
-								<th width="20%">Unit</th>
-								<th width="10%">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-						@foreach($sub_indicator_list as $data)
-								<tr>
-									<td><img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/i1.png') }}" width="45" alt=""></td>
-									<td>{{ $data['SUB_INDICATOR_NAME'] }}</td>
-									<td>{{ $data['UNIT'] }}</td>
-									<td>
-										<button class="uk-button uk-button-default fl-button" type="button">Action</button>
-										<div uk-dropdown="mode:click">
-											<ul class="uk-nav uk-dropdown-nav">
-												<li><a href="edit/form_sub_indicator/{{ $data['SUB_INDICATOR_ID'] }}">Detail</a></li>
-												<li><a href="sub_indicator_delete/{{ $data['SUB_INDICATOR_ID'] }}">Delete</a></li>
-											</ul>
-										</div>
-									</td>
-								</tr>
-						@endforeach
-						</tbody>
-					</table>
-				</div>	
+				<form id="form_perencanaan" action="/master/sub_indicator_edit" method="POST">
+					{{ csrf_field() }}
+					<input type="hidden" name="id" id="id" value="{{ $id }}">
+					<div>
+						<b>Sub Indicator Name</b>
+						<input name="sub_indicator_name" class="uk-input uk-child-width-1-2" type="text" value="{{ $sub_indicator_name }}" placeholder="Sub Indicator Name">
+					</div>
+					<div>
+						<b>Unit</b>
+						<input name="sub_unit" class="uk-input uk-child-width-1-2" type="text" value="{{ $unit }}" placeholder="Unit">
+					</div>
+					<div>
+						<br>
+					</div>
+					<div>
+						<button class="uk-button uk-button-primary fl-button" onclick="save_sub_indicator(this.form.id);return false;">
+							<i class="fa fa-plus"></i>&nbsp;Save
+						</button>
+					</div>
+					
+				</form>
 			</div>
 
 		</div>	
@@ -152,4 +132,48 @@
 	function showModal(){
 		UIkit.modal("#mymodal").show();
 	}
+
+	function save_sub_indicator(formid)
+    {   
+		submit_form(formid);
+    }
+
+	$(".select2").select2();
+	$(".ajax").select2({
+            ajax: {
+                url: "https://api.github.com/search/repositories",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term, // search term
+                        page: params.page
+                    };
+                },
+                processResults: function (data, params) {
+                    // parse the results into the format expected by Select2
+                    // since we are using custom formatting functions we do not need to
+                    // alter the remote JSON data, except to indicate that infinite
+                    // scrolling can be used
+                    params.page = params.page || 1;
+                    return {
+                        results: data.items,
+                        pagination: {
+                            more: (params.page * 30) < data.total_count
+                        }
+                    };
+                },
+                cache: true
+            },
+            escapeMarkup: function (markup) {
+                return markup;
+            }, // let our custom formatter work
+            minimumInputLength: 1,
+            //templateResult: formatRepo, // omitted for brevity, see the source of this page
+            //templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+        });
+    });
+	$(".select2-list").select2({
+            allowClear: true
+        });
 </script>

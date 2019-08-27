@@ -179,7 +179,7 @@
 			<div style="height:310px" data-simplebar data-simplebar-auto-hide="true">
 				<div uk-grid class=" uk-child-width-1-2 uk-child-width-1-4@m uk-child-width-1-2@s" align="center">
 					<div>
-						<a href="sarmut">
+						<a href="txsarmut">
 							<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
 						</a>
 						<span class="fl-icon-title">Divisi Human Capital</span>

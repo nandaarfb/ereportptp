@@ -68,117 +68,83 @@
 			<div class="fl-title-page" >
 				<span style="font-size:20px">				
 					<img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/sopReadMore.png') }}" width="65" alt="">
-					Master Indicator
+					Master Sasaran Mutu
 				</span>
 			</div>
 			
 			<div class="fl-table">
-				<form id="form_indicator" action="/master/indicator_save" method="POST">
+				<form id="form_mst_sarmut" action="/sarmut/master_sarmut_save" method="POST">
 				{{ csrf_field() }}
 					<div>
+						<b>Year</b>
+						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $year }}" disabled="disabled"><br>
+                        <select id="years" class="form-control select2-list" name="years[]">
+                            <option value="">--Pilih Tahun--</option>
+                            @foreach($years as $year)
+                                <option value="{{ $year }}">{{ $year }}</option>
+                            @endforeach
+                        </select>
+					<div>
+					<!-- <div>
+						<b>Organization Structure</b>
+						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $organize_struct }}" disabled="disabled"><br>
+						<select class="form-control select2-list" id="organize_struct_list" name="organize_struct_list[]">
+							<option value="">--Cabang-Divisi-Sub Divisi--</option>
+							@foreach($organize_struct_list as $os)
+								<option value="{{ $os->ORGANIZATION_STRUCTURE_ID }}">{{ $os->BRANCH_OFFICE_NAME }}-{{ $os->DIVISION_NAME }}-{{ $os->SUB_DIVISION_NAME }}</option>
+							@endforeach
+						</select>
+					<div> -->
+					<div>
+						<b>Branch Office</b>
+						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $organize_struct }}" disabled="disabled"><br>
+						<select class="form-control select2-list" id="branch_office" name="branch_office[]">
+							<option value="">--Branch Office--</option>
+							@foreach($cabanglist as $os1)
+								<option value="{{ $os1->BRANCH_OFFICE_ID }}">{{ $os1->BRANCH_OFFICE_NAME }}</option>
+							@endforeach
+						</select>
+					<div>
+					<div>
+						<b>Division</b>
+						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $organize_struct }}" disabled="disabled"><br>
+						<select class="form-control select2-list" id="division" name="division[]">
+							<option value="">--Divisi--</option>
+						</select>
+					<div>
+					<div>
 						<b>Sub Division</b>
-						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $sub_division }}" disabled="disabled"><br>
-                        <select id="sub_division_list" class="form-control select2-list" name="sub_division_list[]">
-                            <option value="">--Sub Division--</option>
-                            @foreach($sub_division_list as $subdivision)
-                                <option value="{{ $subdivision['SUB_DIVISION_ID'] }}">{{ $subdivision['SUB_DIVISION_NAME'] }}</option>
+						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $organize_struct }}" disabled="disabled"><br>
+						<select class="form-control select2-list" id="subdivision" name="subdivision[]">
+							<option value="">--Sub Divisi--</option>
+						</select>
+					<div>
+						<b>Indicator</b>
+						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $indicator }}" disabled="disabled"><br>
+                        <select id="indicator_list" class="form-control select2-list" name="indicator_list[]">
+                            <option value="">--Pilih Indikator--</option>
+                            @foreach($indicator_list as $indicator)
+                                <option value="{{ $indicator['INDICATOR_ID'] }}">{{ $indicator['INDICATOR_NAME'] }}</option>
                             @endforeach
                         </select>
 					<div>
 					<div>
-						<b>Period Name</b>
+						<b>Period</b>
 						<input type="hidden" name="subdivisionlisthidden" id="subdivisionlisthidden" value="{{ $period }}" disabled="disabled"><br>
 						<select class="form-control select2-list" id="period_list" name="period_list[]">
-							<option value="">--Period Name--</option>
+							<option value="">--Pilih Period--</option>
 							@foreach($period_list as $periods)
 								<option value="{{ $periods['PERIOD_ID'] }}">{{ $periods['PERIOD_NAME'] }}</option>
 							@endforeach
 						</select>
 					<div>
 					<div>
-						<b>Indicator Name</b>
-						<input name="indicator_name" class="uk-input uk-child-width-1-2" type="text" placeholder="Indicator Name">
-					</div>
-					<div>
-						<b>Unit Measurement</b>
-						<input name="unit" class="uk-input uk-child-width-1-2" type="text" placeholder="Unit">
-					</div>
-					<div>
-						<b>Formula</b>
-						<input id="formula" name="formula" class="uk-input uk-child-width-1-2" type="text" placeholder="Formula">
-						<div id="m_repeater_3" style="padding-top: 10px;">
-							<div class="form-group  m-form__group row">
-								<div data-repeater-list="" class="col-lg-12">
-									<div data-repeater-item class="row m--margin-bottom-10">
-										<div class="col-lg-5">
-											<div class="input-group">
-												<span class="input-group-addon">
-													<i class="la la-phone"></i>
-												</span>
-												<select class="form-control m-input" id="exampleSelect11">
-													<option value="">
-														--Type--
-													</option>
-													<option value="+">
-														+ (Tambah)
-													</option>
-													<option value="-">
-														- (Kurang)
-													</option>
-													<option value="*">
-														* (Kali)
-													</option>
-													<option value="/">
-														/ (Bagi)
-													</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-lg-5">
-											<div class="input-group">
-												<span class="input-group-addon">
-													<i class="la la-envelope"></i>
-												</span>
-												<select class="form-control m-input" id="exampleSelect1">
-													<option>
-														--Sub Indicator--
-													</option>
-													@foreach($sub_indicator_list as $subindicator)
-														<option value="{{ $subindicator['SUB_INDICATOR_ID'] }}">{{ $subindicator['SUB_INDICATOR_NAME'] }}</option>
-													@endforeach
-												</select>
-											</div>
-										</div>
-										<div class="col-lg-2">
-											<a href="#" data-repeater-delete="" class="btn btn btn-danger m-btn m-btn--icon">
-												<span>
-													<i class="la la-remove"></i>
-													<span>
-														<br>
-													</span>
-												</span>
-											</a>
-											<div data-repeater-create="" class="btn btn btn-primary m-btn m-btn--icon">
-												<span onclick="plusplus();">
-													<i class="la la-plus"></i>
-													<span>
-														Add
-													</span>
-												</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
 						<br>
 					</div>
 						
 
 					<div>
-						<button class="uk-button uk-button-primary fl-button" onclick="save_indicator_target(this.form.id);return false;">
+						<button class="uk-button uk-button-primary fl-button" onclick="save_mst_sarmut(this.form.id);return false;">
 							<i class="fa fa-plus"></i>&nbsp;Save
 						</button>
 					</div>
@@ -216,7 +182,7 @@
 		UIkit.modal("#mymodal").show();
 	}
 
-	function save_indicator(formid)
+	function save_mst_sarmut(formid)
     {   
 		submit_form(formid);
     }
@@ -230,6 +196,28 @@
 		var saatini = $("#formula").val();
 		$("#formula").val(saatini+" "+b+" "+a);
 	}
+
+	$('#branch_office').on('change', function(){
+        var id_branch = $(this).val();
+        $.get('{{ url('getAjax/division') }}/'+id_branch, function (data) {
+            $('#division').empty();
+            $('#division').append('<option value="">--Division--</option>');
+            $.each(data, function (index, element) {
+                $('#division').append('<option value="'+ element.DIVISION_ID +'">'+ element.DIVISION_NAME +'</option>');
+            });
+        });
+    });
+
+	$('#division').on('change', function(){
+        var id_branch = $(this).val();
+        $.get('{{ url('getAjax/subdivision') }}/'+id_branch, function (data) {
+            $('#subdivision').empty();
+            $('#subdivision').append('<option value="">--Sub Division--</option>');
+            $.each(data, function (index, element) {
+                $('#subdivision').append('<option value="'+ element.SUB_DIVISION_ID +'">'+ element.SUB_DIVISION_NAME +'</option>');
+            });
+        });
+    });
 </script>
 	
 </body>

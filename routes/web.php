@@ -26,9 +26,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('dashboard', ['as'=>'dashboard', 'uses'=>'HomeController@index']);
     
     // view sementara
-    Route::get('/sarmut', function () {
-        return view('sarmut.tabel_sarmut');
-    });
     Route::get('/input_sarmut', function () {
         return view('sarmut.input_sarmut');
     });
@@ -44,25 +41,49 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/sop', function () {
         return view('sop.sop');
     });
+
+    //Sarmut Mst
+    Route::get('/sarmut', 'SarmutController@sarmut_list');
+    Route::get('/sarmut/form_sarmut', 'SarmutController@form_sarmut');
+    Route::get('/sarmut/edit/form_mstsarmut/{id}', 'SarmutController@form_edit_mstsarmut');
+    Route::post('/sarmut/master_sarmut_save', 'SarmutController@save_mst_sarmut');
+    Route::post('/sarmut/master_sarmut_edit', 'SarmutController@edit_mst_sarmut');
+    Route::get('/sarmut/master_sarmut_delete/{id}', 'SarmutController@delete_mst_sarmut');
+
+    Route::get('getAjax/{action}/{id}', 'MasterController@get_ajax');
+
+    //Sarmut Tx
+    Route::get('/txsarmut', 'SarmutController@txsarmut_list');
+    Route::get('/txsarmut/form_txsarmut', 'SarmutController@form_txsarmut');
+    Route::get('/txsarmut/edit/form_txsarmut/{id}', 'SarmutController@form_edit_txsarmut');
+    Route::post('/txsarmut/sarmut_save', 'SarmutController@save_tx_sarmut');
+    Route::post('/txsarmut/sarmut_edit', 'SarmutController@edit_tx_sarmut');
+    Route::get('/txsarmut/sarmut_delete/{id}', 'SarmutController@delete_tx_sarmut');
     
     // Master
     // Master Indicator
     Route::get('/master/indicator_list', 'MasterController@indicator_list');
     Route::get('/master/form_indicator', 'MasterController@form_indicator');
+    Route::get('/master/edit/form_indicator/{id}', 'MasterController@form_edit_indicator');
     Route::post('/master/indicator_save', 'MasterController@save_indicator');
-    Route::post('/master/indicator_delete', 'MasterController@delete_indicator');
+    Route::post('/master/indicator_edit', 'MasterController@edit_indicator');
+    Route::get('/master/indicator_delete/{id}', 'MasterController@delete_indicator');
 
     // Master Indicator Target
     Route::get('/master/indicator_target_list', 'MasterController@indicator_target_list');
     Route::get('/master/form_indicator_target', 'MasterController@form_indicator_target');
+    Route::get('/master/edit/form_indicator_target/{id}', 'MasterController@form_edit_indicator_target');
     Route::post('/master/indicator_target_save', 'MasterController@save_indicator_target');
-    Route::post('/master/indicator_target_delete', 'MasterController@delete_indicator_target');
+    Route::post('/master/indicator_target_edit', 'MasterController@edit_indicator_target');
+    Route::get('/master/indicator_target_delete/{id}', 'MasterController@delete_indicator_target');
 
     // Master Sub Indicator
     Route::get('/master/sub_indicator_list', 'MasterController@sub_indicator_list');
     Route::get('/master/form_sub_indicator', 'MasterController@form_sub_indicator');
+    Route::get('/master/edit/form_sub_indicator/{id}', 'MasterController@form_edit_sub_indicator');
     Route::post('/master/sub_indicator_save', 'MasterController@save_sub_indicator');
-    Route::post('/master/sub_indicator_delete', 'MasterController@delete_sub_indicator');
+    Route::post('/master/sub_indicator_edit', 'MasterController@edit_sub_indicator');
+    Route::get('/master/sub_indicator_delete/{id}', 'MasterController@delete_sub_indicator');
 
     Route::get('/logout', 'Auth\LoginController@logout');
 

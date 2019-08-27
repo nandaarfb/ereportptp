@@ -58,10 +58,11 @@
 			<div class="fl-title-page" >
 				<span style="font-size:20px">				
 					<img class="uk-preserve-width uk-border-circle" src="templateslide/assets/img/icon/sopReadMore.png" width="65" alt="">
-					Sasaran Mutu	
+					Master Sasaran Mutu	
 				</span>
 				<span style="float:right;margin-top:15px">
-					<button class="uk-button uk-button-default fl-button" type="button">Sorting</button>
+					<a href="txsarmut"><button class="uk-button uk-button-default fl-button" type="button">Sasaran Mutu</button></a>
+					<button class="uk-button uk-button-primary fl-button" type="button">Sorting</button>
 					<div uk-dropdown="mode: click">
 						<ul class="uk-nav uk-dropdown-nav">
 							<li><a href="#">Divisi</a></li>
@@ -70,7 +71,7 @@
 						</ul>
 					</div>
 					<button class="uk-button uk-button-default fl-button" type="button" onclick="showModal()">Filter</button>
-					<button onclick="location.href = '{{ url('input_sarmut')}}'" class="uk-button uk-button-primary fl-button" type="button">+</button>
+					<button onclick="location.href = '{{ url('sarmut/form_sarmut')}}'" class="uk-button uk-button-primary fl-button" type="button">+</button>
 				</span>
 			</div>
 			
@@ -80,35 +81,44 @@
 						<thead>
 							<tr class="fl-table-head">
 								<th width="5%"></th>
-								<th width="22%">Nama</th>
+								<th width="22%">Cabang</th>
 								<th width="22%">Divisi</th>
-								<th width="20%">Indikator</th>
-								<th width="15%">Nilai</th>
+								<th width="20%">Sub Divisi</th>
+								<th width="15%">Indikator</th>
+								<th width="22%">Tahun</th>
+								<th width="20%">Periode</th>
+								<th width="15%">Status</th>
 								<th width="20%">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php
-								for($a=0;$a<=15;$a++){
-							?>
+						@foreach($sarmut_list as $data)
 								<tr>
-									<td><img class="uk-preserve-width uk-border-circle" src="templateslide/assets/img/icon/i1.png" width="45" alt=""></td>
-									<td>Nanda Arief Bachtiar</td>
-									<td>Divisi Operasi Terminal</td>
-									<td>Operasi Terminal 4</td>
-									<td><b>79 / <span style="color:green">100</span></b></td>
+									<td><img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/i1.png') }}" width="45" alt=""></td>
+									<td>{{ $data->BRANCH_OFFICE_NAME }}</td>
+									<td>{{ $data->DIVISION_NAME }}</td>
+									<td>{{ $data->SUB_DIVISION_NAME }}</td>
+									<td>{{ $data->INDICATOR_NAME }}</td>
+									<td>{{ $data->YEAR }}</td>
+									<td>{{ $data->PERIOD_NAME }}</td>
+									<td>
+									@if($data->ACTIVE == 'Y')
+										<span style="color:green">Active</span>
+									@else
+										<span style="color:red">Inactive</span>
+									@endif
+									</td>
 									<td>
 										<button class="uk-button uk-button-default fl-button" type="button">Action</button>
 										<div uk-dropdown="mode:click">
 											<ul class="uk-nav uk-dropdown-nav">
-												<li><a href="#">Detail</a></li>
-												<li><a href="#">Update</a></li>
-												<li><a href="#">Delete</a></li>
+												<li><a href="sarmut/edit/form_mstsarmut/{{ $data->SASARAN_MUTU_ID }}">Detail</a></li>
+												<li><a href="sarmut/master_sarmut_delete/{{ $data->SASARAN_MUTU_ID }}">Delete</a></li>
 											</ul>
 										</div>
 									</td>
 								</tr>
-							<?php } ?>
+						@endforeach
 						</tbody>
 					</table>
 				</div>	
