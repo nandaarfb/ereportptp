@@ -63,7 +63,7 @@
 					Master Organisasi
 				</span>
 			</div>
-<<<<<<< HEAD
+
 
 			<div class="fl-table">
 				<form id="form_blade" action="/master/organization_structure_save" method="POST">
@@ -71,21 +71,29 @@
 					<div>
 						<b>Branch Office</b>
 						<input type="hidden" name="branchofficehidden" id="branchofficehidden" value="{{ $organisasi }}" disabled="disabled"><br>
-						<select class="select2-list" id="branch_office_id" name="branch_office_id[]">
-							<option value=""></option>
-							@foreach($organization_structure as $organization)
-								<option value="{{ $organization->BRANCH_OFFICE_NAME }}">{{ $organization->BRANCH_OFFICE_NAME }}</option>
+						<select class="select2-list" id="branch_office_id" name="branch_office_id">
+							@foreach($branch as $organization)
+								<option value="{{ $organization->BRANCH_OFFICE_ID }}">{{ $organization->BRANCH_OFFICE_NAME }}</option>
 							@endforeach
 						</select>
 					<div>
-						<div> 
-							<b>Division</b>
-							<input name="division" class="uk-input uk-child-width-1-2" type="text" placeholder="Division">
-						</div>
+					<b>Division</b>
+						<input type="hidden" name="divisionhidden" id="divisionhidden" value="{{ $organisasi }}" disabled="disabled"><br>
+						<select class="select2-list" id="division" name="division">
+							@foreach($division as $organization)
+								<option value="{{ $organization->DIVISION_ID }}">{{ $organization->DIVISION_NAME }}</option>
+							@endforeach
+						</select>
 						<div>
 							<b>Sub Division</b>
-							<input name="sub_division" class="uk-input uk-child-width-1-2" type="text" placeholder="Sub Division">
+							<input type="hidden" name="sub_divisionhidden" id="sub_divisionhidden" value="{{ $organisasi }}" disabled="disabled"><br>
+							<select class="select2-list" id="sub_division" name="sub_division">
+								@foreach($sub_division as $organization)
+									<option value="{{ $organization->SUB_DIVISION_ID }}">{{ $organization->SUB_DIVISION_NAME }}</option>
+								@endforeach
+						</select>
 						</div>
+
 						<div>
 							<b>Active</b>
 							<input name="active" class="uk-input uk-child-width-1-2" type="text" placeholder="Active">
@@ -157,8 +165,8 @@
             allowClear: true
         });
 </script>
-=======
+
 		</div>	
 </body>
 <html>
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
+

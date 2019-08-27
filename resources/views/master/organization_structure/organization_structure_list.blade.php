@@ -70,11 +70,8 @@
 					</ul>
 				</div>
 				<button class="uk-button uk-button-default fl-button" type="button" onclick="showModal()">Filter</button>
-<<<<<<< HEAD
+
 				<a href="form_organization_structure"><button class="uk-button uk-button-primary fl-button" type="button">+</button></a>
-=======
-				<a href="form_indicator_target"><button class="uk-button uk-button-primary fl-button" type="button">+</button></a>
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 			</span>
 		</div>
 
@@ -84,16 +81,9 @@
 						<thead>
 							<tr class="fl-table-head">
 								<th width="5%"></th>
-<<<<<<< HEAD
 								<th width="20%">ID</th>
 								<th width="20%">Branch Office</th>
 								<th width="20%">Division</th>
-=======
-								<th width="20%">No</th>
-								<th width="20%">Branch Office</th>
-								<th width="20%">Dividion</th>
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
-								<th width="20%">Sub Division</th>
 								<th width="20%">Active</th>
 							</tr>
 						</thead>
@@ -101,14 +91,9 @@
 						@foreach($organization_structure_list as $data)
 								<tr>
 									<td><img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/i1.png') }}" width="45" alt=""></td>
-<<<<<<< HEAD
 									<td>{{ $data->ORGANIZATION_STRUCTURE_ID }}</td>
-=======
-									<td>{{ $data->NO }}</td>
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
 									<td>{{ $data->BRANCH_OFFICE_NAME }}</td>
 									<td>{{ $data->DIVISION_NAME }}</td>
-									<td>{{ $data->SUB_DIVISION_NAME }}</td>
 									<td>{{ $data->ACTIVE }}</td>
 									<td>
 										<button class="uk-button uk-button-default fl-button" type="button">Action</button>
@@ -129,7 +114,7 @@
 
 		</div>	
 	</div>
-<<<<<<< HEAD
+
 
 	<!-- This is the modal -->
 	<div id="mymodal" uk-modal >
@@ -156,14 +141,9 @@
 				</div>
 			</div>
 	</div>
-=======
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
+
 </body>
 </html>
-
-
-<<<<<<< HEAD
-
 
 <script>
 	function showModal(){
@@ -171,6 +151,3 @@
 	}
 </script>
 
-
-=======
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94

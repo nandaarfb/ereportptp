@@ -8,11 +8,9 @@ use App\Models\Sub_Indicator;
 use App\Models\Period;
 use App\Models\Sub_Division;
 use App\Models\Organisasi;
-<<<<<<< HEAD
+
 use App\Models\User;
-=======
-use App\Models\Master_User;
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -86,7 +84,7 @@ class MasterController extends Controller
     
     public function organization_structure_list(Request $request)
     {
-<<<<<<< HEAD
+
         $items = \DB::table('tx_organization_structure as os')
                     ->leftJoin('tm_branch_office as b', 'b.BRANCH_OFFICE_ID', '=' , 'os.BRANCH_OFFICE_ID')
                     ->leftJoin('tm_division as d', 'd.DIVISION_ID', '=' , 'os.DIVISION_ID')
@@ -97,12 +95,6 @@ class MasterController extends Controller
                              'os.ACTIVE');
         $organisasi_list = $items->get();
         $now            = Carbon::now();
-=======
-        // $indicator_list = array();
-        $organisasi_list = Organisasi::all()->toArray();
-        $now            = Carbon::now();
-        // dd($sub_indicator_list);
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
         
         return view('master.organization_structure.organization_structure_list', [
                         'now'                   => $now,
@@ -113,15 +105,14 @@ class MasterController extends Controller
     public function master_user_list(Request $request)
     {
         /// $indicator_list = array();
-<<<<<<< HEAD
+
         $master_user_list = User::all()->toArray();
         $now            = Carbon::now();
         // dd($master_user_list);
-=======
-        $master_user_list = Master_User::all()->toArray();
-        $now            = Carbon::now();
+
         // dd($sub_indicator_list);
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
+
+
         
         return view('master.master_user.master_user_list', [
                         'now'                   => $now,
@@ -171,11 +162,16 @@ class MasterController extends Controller
 
     public function form_organization_structure(Request $request)
     {
-<<<<<<< HEAD
-        $items = \DB::table('tx_organization_structure as os')
-        ->leftJoin('tm_branch_office as b', 'b.BRANCH_OFFICE_ID', '=' , 'os.BRANCH_OFFICE_ID')
-        ->select('os.ORGANIZATION_STRUCTURE_ID', 'b.BRANCH_OFFICE_NAME');
-        $organisasi_list = $items->get();
+
+        $branch = \DB::table('tm_branch_office') ->select('BRANCH_OFFICE_ID', 'BRANCH_OFFICE_NAME');
+        $branch_list = $branch->get();
+        
+        $division = \DB::table('tm_division') ->select('DIVISION_ID', 'DIVISION_NAME');
+        $division_list = $division->get();
+
+        $sub_division = \DB::table('tm_sub_division') ->select('SUB_DIVISION_ID', 'SUB_DIVISION_NAME');
+        $sub_division_list = $sub_division->get();
+
         $now            = Carbon::now();
         $organisasi     = '';
         //  dd($organisasi_list);
@@ -183,16 +179,18 @@ class MasterController extends Controller
         return view('master.organization_structure.form', [
                         'now'                   => $now,
                         'organisasi'            => $organisasi,
-                        'organization_structure'             => $organisasi_list,
+                        'branch'                => $branch_list,
+                        'division'              => $division_list,
+                        'sub_division'              => $sub_division_list,
         ]);
-=======
+
        //
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
+
     }
 
     public function form_master_user(Request $request)
     {
-<<<<<<< HEAD
+
         $master_user_list      = User::all()->toArray();
         $now            = Carbon::now();
         $user = '';
@@ -203,9 +201,9 @@ class MasterController extends Controller
                         'user'             => $user,
                         'master_user_list'        => $master_user_list,
         ]);
-=======
+
        //
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
+
     }
 
     public function save_indicator(Request $request)
@@ -309,24 +307,24 @@ class MasterController extends Controller
 
     public function save_organization_structure(Request $request)
     {
-<<<<<<< HEAD
+
         // $user_id            = Auth::user()->id;
-        $branch_office       = $request->branch_office[0];
+        $branch_office       = $request->branch_office_id;
         $division            = $request->division;
         $sub_division        = $request->sub_division;
         $active              = $request->active;
 
         $item = new Organisasi;
-        $item->BRANCH_OFFICE_NAME = $branch_office;
-        $item->DIVISION_NAME = $division;
-        $item->SUB_DIVISION_NAME = $sub_division;
+        $item->BRANCH_OFFICE_ID = $branch_office;
+        $item->DIVISION_ID = $division;
+        $item->SUB_DIVISION_ID = $sub_division;
         $item->ACTIVE = $active;
         $item->save();
 
-        return redirect('/master/organization_structure_list');
-=======
+        return redirect('/master/organization_structure');
+
         //
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
+
     }
 
     public function delete_organization_structure(Request $request)
@@ -336,7 +334,7 @@ class MasterController extends Controller
 
     public function save_master_user(Request $request)
     {
-<<<<<<< HEAD
+
         // $user_id            = Auth::user()->id;
         $id_jabatan    = $request->id_jabatan;
         $nipp          = $request->nipp;
@@ -355,15 +353,16 @@ class MasterController extends Controller
         $item->NAMA = $nama;
         $item->TIPE = $tipe;
         $item->ACCESS = $access;
-        $item->STATUS = $active;
+        $item->STATUS = $status;
         $item->TGL_PENSIUN = $tgl_pensiun;
         // $item->ENCPASS = $encpass;
         $item->save();
 
         return redirect('/master/master_user');
-=======
+
         //
->>>>>>> 521f40b918ea55fc0f7f887809f4e723c7779e94
+
+        
     }
 
     public function delete_master_user(Request $request)
