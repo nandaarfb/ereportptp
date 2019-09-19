@@ -68,7 +68,7 @@
 			<div class="fl-title-page" >
 				<span style="font-size:20px">				
 					<img class="uk-preserve-width uk-border-circle" src="templateslide/assets/img/icon/sopReadMore.png" width="65" alt="">
-					Input Sasaran Mutu	
+					Input KPI	
 				</span>
 			</div>
 			
@@ -85,7 +85,7 @@
 							</tr>
 						</thead>
 						<?php $i = 0 ?>
-					@foreach($sarmut_list as $data)
+					@foreach($kpi_list as $data)
 						<tbody>
 							<tr>
 								<td><img class="uk-preserve-width uk-border-circle" src="templateslide/assets/img/icon/i1.png" width="45" alt=""></td>

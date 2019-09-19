@@ -7,12 +7,12 @@ use App\Models\Indicator_Target;
 use App\Models\Sub_Indicator;
 use App\Models\Period;
 use App\Models\Sub_Division;
-use App\Models\Master_Sarmut;
+use App\Models\Master_KPI;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class SarmutController extends Controller
+class KPIController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -34,49 +34,49 @@ class SarmutController extends Controller
         ]);
     }
     
-    public function sarmut_list(Request $request)
+    public function kpi_list(Request $request)
     {
         // $indicator_list = array();
-        $items = \DB::table('tm_sasaran_mutu as t')
+        $items = \DB::table('tm_kpi as t')
                     ->leftJoin('tx_organization_structure as o', 'o.ORGANIZATION_STRUCTURE_ID', '=' , 't.ORGANIZATION_STRUCTURE_ID')
                     ->leftJoin('tm_period as p', 'p.PERIOD_ID', '=' , 't.PERIOD_ID')
                     ->leftJoin('tm_sub_division as sd', 'sd.SUB_DIVISION_ID', '=' , 'o.SUB_DIVISION_ID')
                     ->leftJoin('tm_division as d', 'd.DIVISION_ID', '=' , 'sd.DIVISION_ID')
                     ->leftJoin('tm_branch_office as c', 'c.BRANCH_OFFICE_ID', '=' , 'd.BRANCH_OFFICE_ID')
                     ->leftJoin('tm_indicator as i', 'i.INDICATOR_ID', '=' , 't.INDICATOR_ID')
-                    ->select('t.SASARAN_MUTU_ID as SASARAN_MUTU_ID', 'i.INDICATOR_NAME as INDICATOR_NAME', 'c.BRANCH_OFFICE_NAME as BRANCH_OFFICE_NAME', 'd.DIVISION_NAME as DIVISION_NAME', 'sd.SUB_DIVISION_NAME as SUB_DIVISION_NAME', 'p.PERIOD_NAME as PERIOD_NAME', 't.YEAR as YEAR', 't.ACTIVE as ACTIVE');
-        $sarmut_list = $items->get();
+                    ->select('t.KPI_ID as KPI_ID', 'i.INDICATOR_NAME as INDICATOR_NAME', 'c.BRANCH_OFFICE_NAME as BRANCH_OFFICE_NAME', 'd.DIVISION_NAME as DIVISION_NAME', 'sd.SUB_DIVISION_NAME as SUB_DIVISION_NAME', 'p.PERIOD_NAME as PERIOD_NAME', 't.YEAR as YEAR', 't.ACTIVE as ACTIVE');
+        $kpi_list = $items->get();
         $now            = Carbon::now();
         // dd($indicator_list);
         
-        return view('sarmut.tabel_sarmut', [
+        return view('kpi.tabel_kpi', [
                         'now'                   => $now,
-                        'sarmut_list'        => $sarmut_list,
+                        'kpi_list'        => $kpi_list,
         ]);
     }
     
-    public function txsarmut_list(Request $request)
+    public function txkpi_list(Request $request)
     {
         // $indicator_list = array();
-        $items = \DB::table('tm_sasaran_mutu as t')
+        $items = \DB::table('tm_kpi as t')
                     ->leftJoin('tx_organization_structure as o', 'o.ORGANIZATION_STRUCTURE_ID', '=' , 't.ORGANIZATION_STRUCTURE_ID')
                     ->leftJoin('tm_period as p', 'p.PERIOD_ID', '=' , 't.PERIOD_ID')
                     ->leftJoin('tm_sub_division as sd', 'sd.SUB_DIVISION_ID', '=' , 'o.SUB_DIVISION_ID')
                     ->leftJoin('tm_division as d', 'd.DIVISION_ID', '=' , 'sd.DIVISION_ID')
                     ->leftJoin('tm_branch_office as c', 'c.BRANCH_OFFICE_ID', '=' , 'd.BRANCH_OFFICE_ID')
                     ->leftJoin('tm_indicator as i', 'i.INDICATOR_ID', '=' , 't.INDICATOR_ID')
-                    ->select('t.SASARAN_MUTU_ID as SASARAN_MUTU_ID', 'i.INDICATOR_NAME as INDICATOR_NAME', 'c.BRANCH_OFFICE_NAME as BRANCH_OFFICE_NAME', 'd.DIVISION_NAME as DIVISION_NAME', 'sd.SUB_DIVISION_NAME as SUB_DIVISION_NAME', 'p.PERIOD_NAME as PERIOD_NAME', 't.YEAR as YEAR', 't.ACTIVE as ACTIVE');
-        $sarmut_list = $items->get();
+                    ->select('t.KPI_ID as KPI_ID', 'i.INDICATOR_NAME as INDICATOR_NAME', 'c.BRANCH_OFFICE_NAME as BRANCH_OFFICE_NAME', 'd.DIVISION_NAME as DIVISION_NAME', 'sd.SUB_DIVISION_NAME as SUB_DIVISION_NAME', 'p.PERIOD_NAME as PERIOD_NAME', 't.YEAR as YEAR', 't.ACTIVE as ACTIVE');
+        $kpi_list = $items->get();
         $now            = Carbon::now();
         // dd($indicator_list);
         
-        return view('sarmut.tabel_txsarmut', [
+        return view('kpi.tabel_txkpi', [
                         'now'                   => $now,
-                        'txsarmut_list'        => $sarmut_list,
+                        'txkpi_list'        => $kpi_list,
         ]);
     }
     
-    public function form_sarmut(Request $request)
+    public function form_kpi(Request $request)
     {
         $items = \DB::table('tx_organization_structure as o')
                     ->leftJoin('tm_sub_division as sd', 'sd.SUB_DIVISION_ID', '=' , 'o.SUB_DIVISION_ID')
@@ -98,7 +98,7 @@ class SarmutController extends Controller
         $organize_struct  = '';
         $now            = Carbon::now();
         
-        return view('sarmut.form', [
+        return view('kpi.form', [
                         'now'                   => $now,
                         'period'                => $period,
                         'period_list'                => $period_list,
@@ -112,10 +112,10 @@ class SarmutController extends Controller
         ]);
     }
 
-    public function form_edit_mstsarmut(Request $request)
+    public function form_edit_mstkpi(Request $request)
     {
         // dd($request->id);
-        $itemselects = Master_Sarmut::where('SASARAN_MUTU_ID', $request->id)->first();
+        $itemselects = Master_KPI::where('KPI_ID', $request->id)->first();
         // dd($itemselects->INDICATOR_ID);
         $id = $request->id;
         $selectedyear = $itemselects->YEAR;
@@ -138,7 +138,7 @@ class SarmutController extends Controller
         $organize_struct  = '';
         $now            = Carbon::now();
         
-        return view('sarmut.formedit', [
+        return view('kpi.formedit', [
                         'now'                   => $now,
                         'id'                => $id,
                         'period'                => $period,
@@ -156,16 +156,16 @@ class SarmutController extends Controller
         ]);
     }
 
-    public function save_mst_sarmut(Request $request)
+    public function save_mst_kpi(Request $request)
     {
         $year    = $request->years[0];
         $organize_struct          = $request->organize_struct_list[0];
         $indicator     = $request->indicator_list[0];
         $period            = $request->period_list[0];
 
-        $item = new Master_Sarmut;
-        // if($is_sarmut == null){
-        //     $item->IS_SASARAN_MUTU = $is_sarmut;
+        $item = new Master_KPI;
+        // if($is_kpi == null){
+        //     $item->IS_kpi = $is_kpi;
         // }
         // if($is_kpi == null){
         //     $item->IS_KPI = $is_kpi;
@@ -179,19 +179,19 @@ class SarmutController extends Controller
         $item->YEAR = $year;
         $item->save();
 
-        return redirect('/sarmut');
+        return redirect('/kpi');
     }
 
-    public function edit_mst_sarmut(Request $request)
+    public function edit_mst_kpi(Request $request)
     {
         $year    = $request->years[0];
         $organize_struct          = $request->organize_struct_list[0];
         $indicator     = $request->indicator_list[0];
         $period            = $request->period_list[0];
 
-        $item = Master_Sarmut::where('SASARAN_MUTU_ID', $request->id)->first();
-        // if($is_sarmut == null){
-        //     $item->IS_SASARAN_MUTU = $is_sarmut;
+        $item = Master_KPI::where('KPI_ID', $request->id)->first();
+        // if($is_kpi == null){
+        //     $item->IS_kpi = $is_kpi;
         // }
         // if($is_kpi == null){
         //     $item->IS_KPI = $is_kpi;
@@ -205,31 +205,31 @@ class SarmutController extends Controller
         $item->YEAR = $year;
         $item->save();
 
-        return redirect('/sarmut');
+        return redirect('/kpi');
     }
 
-    public function delete_mst_sarmut(Request $request)
+    public function delete_mst_kpi(Request $request)
     {
-        Master_Sarmut::where('SASARAN_MUTU_ID',$request->id)->delete();
+        Master_KPI::where('KPI_ID',$request->id)->delete();
 
-        return redirect('/sarmut');
+        return redirect('/kpi');
     }
 
-    public function form_input_sarmut(Request $request)
+    public function form_input_kpi(Request $request)
     {
         $now            = Carbon::now();
-        $items = \DB::table('tm_sasaran_mutu as a')
+        $items = \DB::table('tm_kpi as a')
                     ->leftJoin('tm_indicator as b', 'a.INDICATOR_ID', '=' , 'b.INDICATOR_ID')
                     ->leftJoin('tx_organization_structure as c', 'a.ORGANIZATION_STRUCTURE_ID', '=' , 'c.ORGANIZATION_STRUCTURE_ID')
                     ->leftJoin('tm_division as d', 'c.DIVISION_ID', '=' , 'd.DIVISION_ID')
                     ->leftJoin('tm_indicator_target as e', 'b.INDICATOR_ID', '=' , 'e.INDICATOR_ID')
-                    ->select('a.SASARAN_MUTU_ID as SASARAN_MUTU_ID', 'b.INDICATOR_NAME as INDICATOR_NAME', 'b.UNIT as UNIT', 'e.TARGET as TARGET', 'd.DIVISION_NAME as DIVISION_NAME', 'b.FORMULA as FORMULA')
+                    ->select('a.KPI_ID as KPI_ID', 'b.INDICATOR_NAME as INDICATOR_NAME', 'b.UNIT as UNIT', 'e.TARGET as TARGET', 'd.DIVISION_NAME as DIVISION_NAME', 'b.FORMULA as FORMULA')
                     ->where('d.DIVISION_ID', '=', '1');
-        $sarmut_list1 = $items->get();
-        $sarmut_list = $sarmut_list1->toArray();
+        $kpi_list1 = $items->get();
+        $kpi_list = $kpi_list1->toArray();
 
         $sub_list = array();
-        foreach ($sarmut_list1 as $data) {
+        foreach ($kpi_list1 as $data) {
             $sub_ind = str_split($data->FORMULA, 1);
             // dd($sub_ind);
             $num_split = array();
@@ -246,12 +246,11 @@ class SarmutController extends Controller
             array_push($sub_list, $sub_in);
             unset($num_split);
         }
-        // dd($sub_list);
 
-        return view('sarmut.input_sarmut', [
+        return view('kpi.input_kpi', [
             'now'                   => $now,
-            'sarmut_list'     => $sarmut_list,
-            'sarmut'          => '',
+            'kpi_list'     => $kpi_list,
+            'kpi'          => '',
             'sub_in'     => $sub_list,
         ]);
     }

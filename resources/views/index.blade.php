@@ -182,14 +182,14 @@
 						<a href="txsarmut">
 							<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
 						</a>
-						<span class="fl-icon-title">Divisi Human Capital</span>
+						<span class="fl-icon-title">Divisi Human CapitalSarmut</span>
 					</div>
 					
 					<div>
-					<a href="kpi">
+					<a href="txkpi">
 						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
 					</a>
-						<span class="fl-icon-title">Divisi Operasi Terminal</span>
+						<span class="fl-icon-title">Divisi Operasi TerminalKPI</span>
 					</div>
 
 					<div>
@@ -200,10 +200,10 @@
 					</div>
 
 					<div>
-					<a href="tkp">
+					<a href="txtkp">
 						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
 						</a>
-						<span class="fl-icon-title">Divisi Teknologi Informasi</span>
+						<span class="fl-icon-title">Divisi Teknologi InformasiTKP</span>
 					</div>
 
 					<div>

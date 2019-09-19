@@ -58,10 +58,10 @@
 			<div class="fl-title-page" >
 				<span style="font-size:20px">				
 					<img class="uk-preserve-width uk-border-circle" src="templateslide/assets/img/icon/sopReadMore.png" width="65" alt="">
-					Master KPI	
+					KPI	
 				</span>
 				<span style="float:right;margin-top:15px">
-					<a href="txkpi"><button class="uk-button uk-button-default fl-button" type="button">KPI</button></a>
+					<a href="kpi"><button class="uk-button uk-button-default fl-button" type="button">Master KPI</button></a>
 					<button class="uk-button uk-button-primary fl-button" type="button">Sorting</button>
 					<div uk-dropdown="mode: click">
 						<ul class="uk-nav uk-dropdown-nav">
@@ -71,7 +71,8 @@
 						</ul>
 					</div>
 					<button class="uk-button uk-button-default fl-button" type="button" onclick="showModal()">Filter</button>
-					<button onclick="location.href = '{{ url('kpi/form_kpi')}}'" class="uk-button uk-button-primary fl-button" type="button">+</button>
+					<button onclick="location.href = '{{ url('input_kpi')}}'" class="uk-button uk-button-primary fl-button" type="button">+</button>
+					<!-- <button onclick="location.href = '{{ url('kpi/form_kpi')}}'" class="uk-button uk-button-primary fl-button" type="button">+</button> -->
 				</span>
 			</div>
 			
@@ -81,44 +82,34 @@
 						<thead>
 							<tr class="fl-table-head">
 								<th width="5%"></th>
+								<th width="22%">Periode</th>
 								<th width="22%">Cabang</th>
-								<th width="22%">Divisi</th>
-								<th width="20%">Sub Divisi</th>
-								<th width="15%">Indikator</th>
-								<th width="22%">Tahun</th>
-								<th width="20%">Periode</th>
+								<th width="20%">Divisi</th>
+								<th width="15%">Sub Divisi</th>
 								<th width="15%">Status</th>
 								<th width="20%">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-						@foreach($kpi_list as $data)
 								<tr>
 									<td><img class="uk-preserve-width uk-border-circle" src="{{ URL::asset('templateslide/assets/img/icon/i1.png') }}" width="45" alt=""></td>
-									<td>{{ $data->BRANCH_OFFICE_NAME }}</td>
-									<td>{{ $data->DIVISION_NAME }}</td>
-									<td>{{ $data->SUB_DIVISION_NAME }}</td>
-									<td>{{ $data->INDICATOR_NAME }}</td>
-									<td>{{ $data->YEAR }}</td>
-									<td>{{ $data->PERIOD_NAME }}</td>
+									<td>Jan 19</td>
+									<td>Pelabuhan Tanjung Priok</td>
+									<td>IT dan Operasional</td>
+									<td>IT</td>=
 									<td>
-									@if($data->ACTIVE == 'Y')
-										<span style="color:green">Active</span>
-									@else
-										<span style="color:red">Inactive</span>
-									@endif
+										<span style="color:green">Approved</span>
 									</td>
 									<td>
 										<button class="uk-button uk-button-default fl-button" type="button">Action</button>
 										<div uk-dropdown="mode:click">
 											<ul class="uk-nav uk-dropdown-nav">
-												<li><a href="kpi/edit/form_mstkpi/{{ $data->KPI_ID }}">Detail</a></li>
-												<li><a href="kpi/master_kpi_delete/{{ $data->KPI_ID }}">Delete</a></li>
+												<li><a href="">Detail</a></li>
+												<li><a href="">Delete</a></li>
 											</ul>
 										</div>
 									</td>
 								</tr>
-						@endforeach
 						</tbody>
 					</table>
 				</div>	

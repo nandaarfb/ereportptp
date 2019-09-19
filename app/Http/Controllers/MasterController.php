@@ -243,7 +243,10 @@ class MasterController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5e918b42e375ced7243dd0d20df785296c4aed07
     public function form_edit_indicator_target(Request $request)
     {
         $items = Indicator_Target::where('INDICATOR_TARGET_ID', $request->id)->first();
@@ -272,6 +275,7 @@ class MasterController extends Controller
         ]);
     }
     
+<<<<<<< HEAD
     public function form_organization_structure(Request $request)
     {
 
@@ -318,6 +322,8 @@ class MasterController extends Controller
 
     }
 
+=======
+>>>>>>> 5e918b42e375ced7243dd0d20df785296c4aed07
     public function save_indicator(Request $request)
     {
         $sub_division_id    = $request->sub_division_list[0];
@@ -343,7 +349,10 @@ class MasterController extends Controller
         return redirect('/master/indicator_list');
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5e918b42e375ced7243dd0d20df785296c4aed07
     public function edit_indicator(Request $request)
     {
         
