@@ -29,6 +29,15 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/manajemen_report', function () {
         return view('report.management_report');
     });
+    Route::get('/dokumen_pendukung', function () {
+        return view('dokumen.dokumen_pendukung');
+    });
+    Route::get('/kpi', function () {
+        return view('kpi.tabel_kpi');
+    });
+    Route::get('/tkp', function () {
+        return view('tkp.tabel_tingkat_kesehatan');
+    });
     Route::get('/sop', function () {
         return view('sop.sop');
     });
@@ -52,7 +61,19 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/txsarmut/sarmut_save', 'SarmutController@save_tx_sarmut');
     Route::post('/txsarmut/sarmut_edit', 'SarmutController@edit_tx_sarmut');
     Route::get('/txsarmut/sarmut_delete/{id}', 'SarmutController@delete_tx_sarmut');
+
     Route::get('/input_sarmut', 'SarmutController@form_input_sarmut'); 
+
+
+
+     // Dokument
+     Route::get('/dokumen/dokumen_pendukung_list', 'DokumenController@dokumen_pendukung_list');
+     Route::get('/dokumen/dokumen_pendukung', 'DokumenController@dokumen_pendukung');
+    //  Route::post('/master/organization_structure_save', 'MasterController@save_organization_structure');
+    //  Route::post('/master/organization_structure_delete', 'MasterController@delete_organization_structure');
+
+    Route::get('/input_sarmut', 'SarmutController@form_input_sarmut');
+
 
     //KPI
     //KPI Mst
@@ -91,6 +112,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/txtkp/tkp_edit', 'TKPController@edit_tx_tkp');
     Route::get('/txtkp/tkp_delete/{id}', 'TKPController@delete_tx_tkp');
     Route::get('/input_tkp', 'TKPController@form_input_tkp');
+
     
     // Master
     // Master Indicator

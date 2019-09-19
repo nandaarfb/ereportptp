@@ -8,7 +8,7 @@ use App\Models\Sub_Indicator;
 use App\Models\Period;
 use App\Models\Sub_Division;
 use App\Models\Organisasi;
-
+use App\Models\Dokumen;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -243,6 +243,10 @@ class MasterController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5e918b42e375ced7243dd0d20df785296c4aed07
     public function form_edit_indicator_target(Request $request)
     {
         $items = Indicator_Target::where('INDICATOR_TARGET_ID', $request->id)->first();
@@ -271,6 +275,55 @@ class MasterController extends Controller
         ]);
     }
     
+<<<<<<< HEAD
+    public function form_organization_structure(Request $request)
+    {
+
+        $branch = \DB::table('tm_branch_office') ->select('BRANCH_OFFICE_ID', 'BRANCH_OFFICE_NAME');
+        $branch_list = $branch->get();
+        
+        $division = \DB::table('tm_division') ->select('DIVISION_ID', 'DIVISION_NAME');
+        $division_list = $division->get();
+
+        $sub_division = \DB::table('tm_sub_division') ->select('SUB_DIVISION_ID', 'SUB_DIVISION_NAME');
+        $sub_division_list = $sub_division->get();
+
+        $now            = Carbon::now();
+        $organisasi     = '';
+        //  dd($organisasi_list);
+        
+        return view('master.organization_structure.form', [
+                        'now'                   => $now,
+                        'organisasi'            => $organisasi,
+                        'branch'                => $branch_list,
+                        'division'              => $division_list,
+                        'sub_division'              => $sub_division_list,
+        ]);
+
+       //
+
+    }
+
+    public function form_master_user(Request $request)
+    {
+
+        $master_user_list      = User::all()->toArray();
+        $now            = Carbon::now();
+        $user = '';
+        // dd($organisasi;
+        
+        return view('master.master_user.form', [
+                        'now'                   => $now,
+                        'user'             => $user,
+                        'master_user_list'        => $master_user_list,
+        ]);
+
+       //
+
+    }
+
+=======
+>>>>>>> 5e918b42e375ced7243dd0d20df785296c4aed07
     public function save_indicator(Request $request)
     {
         $sub_division_id    = $request->sub_division_list[0];
@@ -296,30 +349,40 @@ class MasterController extends Controller
         return redirect('/master/indicator_list');
     }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5e918b42e375ced7243dd0d20df785296c4aed07
     public function edit_indicator(Request $request)
     {
-        $sub_division_id    = $request->sub_division_list[0];
-        $period_id          = $request->period_list[0];
-        $indicator_name     = $request->indicator_name;
-        $formula            = $request->formula;
-        $unit               = $request->unit;
-        $is_sarmut          = $request->is_sarmut;
-        $is_kpi             = $request->is_kpi;
-        $is_tkp             = $request->is_tkp;
-
-        $item = Indicator::where('INDICATOR_ID', $request->id)->first();
         
-        $item->INDICATOR_NAME = $indicator_name;
-        $item->SUB_DIVISION_ID = $sub_division_id;
-        $item->PERIOD_ID = $period_id;
-        $formula = rtrim(rtrim($formula, '+'), '-');
-        $formula = rtrim(rtrim($formula, '*'), '/');
-        $item->FORMULA = $formula;
-        $item->UNIT = $unit;
-        $item->save();
-
-        return redirect('/master/indicator_list');
     }
+
+    // public function delete_indicator(Request $request)
+
+    // {
+    //     $sub_division_id    = $request->sub_division_list[0];
+    //     $period_id          = $request->period_list[0];
+    //     $indicator_name     = $request->indicator_name;
+    //     $formula            = $request->formula;
+    //     $unit               = $request->unit;
+    //     $is_sarmut          = $request->is_sarmut;
+    //     $is_kpi             = $request->is_kpi;
+    //     $is_tkp             = $request->is_tkp;
+
+    //     $item = Indicator::where('INDICATOR_ID', $request->id)->first();
+        
+    //     $item->INDICATOR_NAME = $indicator_name;
+    //     $item->SUB_DIVISION_ID = $sub_division_id;
+    //     $item->PERIOD_ID = $period_id;
+    //     $formula = rtrim(rtrim($formula, '+'), '-');
+    //     $formula = rtrim(rtrim($formula, '*'), '/');
+    //     $item->FORMULA = $formula;
+    //     $item->UNIT = $unit;
+    //     $item->save();
+
+    //     return redirect('/master/indicator_list');
+    // }
 
     public function delete_indicator(Request $request)
     {
