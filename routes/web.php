@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/txsarmut/sarmut_save', 'SarmutController@save_tx_sarmut');
     Route::post('/txsarmut/sarmut_edit', 'SarmutController@edit_tx_sarmut');
     Route::get('/txsarmut/sarmut_delete/{id}', 'SarmutController@delete_tx_sarmut');
-    Route::get('/input_sarmut', 'SarmutController@form_input_sarmut');
+    Route::get('/input_sarmut', 'SarmutController@form_input_sarmut'); 
 
     //KPI
     //KPI Mst
