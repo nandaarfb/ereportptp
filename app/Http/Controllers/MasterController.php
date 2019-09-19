@@ -8,7 +8,7 @@ use App\Models\Sub_Indicator;
 use App\Models\Period;
 use App\Models\Sub_Division;
 use App\Models\Organisasi;
-
+use App\Models\Dokumen;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -243,7 +243,7 @@ class MasterController extends Controller
         ]);
     }
 
-<<<<<<< HEAD
+
     public function form_edit_indicator_target(Request $request)
     {
         $items = Indicator_Target::where('INDICATOR_TARGET_ID', $request->id)->first();
@@ -272,7 +272,6 @@ class MasterController extends Controller
         ]);
     }
     
-=======
     public function form_organization_structure(Request $request)
     {
 
@@ -319,7 +318,6 @@ class MasterController extends Controller
 
     }
 
->>>>>>> f5708245d213c5169bd976fa5131a883387b2635
     public function save_indicator(Request $request)
     {
         $sub_division_id    = $request->sub_division_list[0];
@@ -345,35 +343,37 @@ class MasterController extends Controller
         return redirect('/master/indicator_list');
     }
 
-<<<<<<< HEAD
+
     public function edit_indicator(Request $request)
-=======
-
-    public function delete_indicator(Request $request)
->>>>>>> f5708245d213c5169bd976fa5131a883387b2635
     {
-        $sub_division_id    = $request->sub_division_list[0];
-        $period_id          = $request->period_list[0];
-        $indicator_name     = $request->indicator_name;
-        $formula            = $request->formula;
-        $unit               = $request->unit;
-        $is_sarmut          = $request->is_sarmut;
-        $is_kpi             = $request->is_kpi;
-        $is_tkp             = $request->is_tkp;
-
-        $item = Indicator::where('INDICATOR_ID', $request->id)->first();
         
-        $item->INDICATOR_NAME = $indicator_name;
-        $item->SUB_DIVISION_ID = $sub_division_id;
-        $item->PERIOD_ID = $period_id;
-        $formula = rtrim(rtrim($formula, '+'), '-');
-        $formula = rtrim(rtrim($formula, '*'), '/');
-        $item->FORMULA = $formula;
-        $item->UNIT = $unit;
-        $item->save();
-
-        return redirect('/master/indicator_list');
     }
+
+    // public function delete_indicator(Request $request)
+
+    // {
+    //     $sub_division_id    = $request->sub_division_list[0];
+    //     $period_id          = $request->period_list[0];
+    //     $indicator_name     = $request->indicator_name;
+    //     $formula            = $request->formula;
+    //     $unit               = $request->unit;
+    //     $is_sarmut          = $request->is_sarmut;
+    //     $is_kpi             = $request->is_kpi;
+    //     $is_tkp             = $request->is_tkp;
+
+    //     $item = Indicator::where('INDICATOR_ID', $request->id)->first();
+        
+    //     $item->INDICATOR_NAME = $indicator_name;
+    //     $item->SUB_DIVISION_ID = $sub_division_id;
+    //     $item->PERIOD_ID = $period_id;
+    //     $formula = rtrim(rtrim($formula, '+'), '-');
+    //     $formula = rtrim(rtrim($formula, '*'), '/');
+    //     $item->FORMULA = $formula;
+    //     $item->UNIT = $unit;
+    //     $item->save();
+
+    //     return redirect('/master/indicator_list');
+    // }
 
     public function delete_indicator(Request $request)
     {

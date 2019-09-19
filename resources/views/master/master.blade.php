@@ -157,12 +157,14 @@
 					<div>
 					<a href="tkp">
 						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
-						</a>
+					</a>
 						<span class="fl-icon-title">Divisi Teknologi Informasi</span>
 					</div>
 
 					<div>
+					<a href="dokumen_pendukung">
 						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+					</a>
 						<span class="fl-icon-title">Sekerataris Perusahaan</span>
 					</div>
 
