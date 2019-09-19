@@ -202,6 +202,13 @@ html{
 .fl-table-head th{
     font-weight: 700 !important;
     color:#000 !important; 
+    background: #fff;
+}
+
+.fl-table-head-sm th{
+    font-weight: 700 !important;
+    color:#000 !important; 
+    background: #f1f1f1;
 }
 
 .fl-title-page{

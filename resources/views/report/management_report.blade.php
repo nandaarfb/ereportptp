@@ -69,7 +69,7 @@
 											<img src="templateslide/assets/img/icon/sopUpload.png" width="120"><br>
 											<span style="font-size:22px;font-weight:600">Upload Report</span>
 											<div>
-												Title Report
+												<br>
 											</div>
 											<div style="margin-top:15px">
 												<button class="uk-button uk-button-success fl-button" type="button">
