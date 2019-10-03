@@ -22,6 +22,31 @@ class ReportController extends Controller
         // $this->middleware('auth');
     // }s
 
+    public function index(){
+        $data = Report::get();
+        return view('report.management_report', compact('data'));
+    }
+
+    public function add_post(Request $request){
+        $file = $request->file('file');
+        $ext = $file->getClientOriginalExtension();
+        $nama_file = time()."_".$file->getClientOriginalName();
+        $tujuan_upload = 'report';
+        $file->move($tujuan_upload, $nama_file);
+        $simpan = new Report();
+        $simpan->ORGANIZATION_STRUCTURE_ID = $request->organisasi_id;
+        $simpan->FILE_NAME = $nama_file;
+        $simpan->FILE_LOCATION = $tujuan_upload;
+        $simpan->FILE_TYPE = $ext;
+        $simpan->save();
+
+        return redirect('management_report_index');
+    }
+
+    public function download($id){
+        return response()->download(public_path('report/'.$id));
+    }
+
     public function master_menu(Request $request)
     {
         $now            = Carbon::now();
@@ -31,29 +56,9 @@ class ReportController extends Controller
                         'now'                   => $now,
         ]);
     }
-
     public function report_list(Request $request)
     {
         //
     }
 
-    public function organization_structure_list(Request $request)
-    {
-
-        $items = \DB::table('tx_organization_structure as os')
-                    ->leftJoin('tm_branch_office as b', 'b.BRANCH_OFFICE_ID', '=' , 'os.BRANCH_OFFICE_ID')
-                    ->leftJoin('tm_division as d', 'd.DIVISION_ID', '=' , 'os.DIVISION_ID')
-                    ->leftJoin('tm_sub_division as sd', 'sd.SUB_DIVISION_ID', '=' , 'os.SUB_DIVISION_ID')
-                    ->select('os.ORGANIZATION_STRUCTURE_ID', 'b.BRANCH_OFFICE_NAME', 
-                             'os.DIVISION_ID', 'd.DIVISION_NAME',
-                             'os.SUB_DIVISION_ID', 'sd.SUB_DIVISION_NAME', 
-                             'os.ACTIVE');
-        $organisasi_list = $items->get();
-        $now            = Carbon::now();
-        
-        return view('master.organization_structure.organization_structure_list', [
-                        'now'                   => $now,
-                        'organization_structure_list'        => $organisasi_list,
-        ]);
-    }
 }

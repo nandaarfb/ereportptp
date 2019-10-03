@@ -26,21 +26,35 @@ Route::middleware(['auth'])->group(function(){
     Route::get('dashboard', ['as'=>'dashboard', 'uses'=>'HomeController@index']);
     
     // view sementara
-    Route::get('/manajemen_report', function () {
-        return view('report.management_report');
+    Route::get('/management_report_index', 'ReportController@index');
+    Route::get('/management_report_upload', function () {
+        return view('report.management_report_upload');
     });
-    Route::get('/dokumen_pendukung', function () {
-        return view('dokumen.dokumen_pendukung');
+    Route::post('/management_report_upload', 'ReportController@add_post');
+    Route::get('/management_report_download/{id}', 'ReportController@download');
+
+
+    Route::get('/dokumen_pendukung', 'DokumenController@index');
+    Route::get('/dokumen_pendukung_upload', function () {
+        return view('dokumen.dokumen_pendukung_upload');
     });
+    Route::post('/dokumen_pendukung_upload', 'DokumenController@add_post');
+    Route::get('/dokumen_pendukung_download/{id}', 'DokumenController@download');
+
+
     Route::get('/kpi', function () {
         return view('kpi.tabel_kpi');
     });
     Route::get('/tkp', function () {
         return view('tkp.tabel_tingkat_kesehatan');
     });
-    Route::get('/sop', function () {
-        return view('sop.sop');
+
+    Route::get('/sop_index', 'SopController@index');
+    Route::get('/sop_upload', function () {
+        return view('sop.sop_upload');
     });
+    Route::post('/sop_upload', 'SopController@add_post');
+    Route::get('/sop_download/{id}', 'SopController@download');
 
     Route::get('getAjax/{action}/{id}', 'MasterController@get_ajax');
 
@@ -62,11 +76,56 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/txsarmut/sarmut_edit', 'SarmutController@edit_tx_sarmut');
     Route::get('/txsarmut/sarmut_delete/{id}', 'SarmutController@delete_tx_sarmut');
 
+    Route::get('/input_sarmut', 'SarmutController@form_input_sarmut'); 
+
+
+
      // Dokument
      Route::get('/dokumen/dokumen_pendukung_list', 'DokumenController@dokumen_pendukung_list');
      Route::get('/dokumen/dokumen_pendukung', 'DokumenController@dokumen_pendukung');
     //  Route::post('/master/organization_structure_save', 'MasterController@save_organization_structure');
     //  Route::post('/master/organization_structure_delete', 'MasterController@delete_organization_structure');
+
+
+
+    //KPI
+    //KPI Mst
+    Route::get('/kpi', 'KPIController@kpi_list');
+    Route::get('/kpi/form_kpi', 'KPIController@form_kpi');
+    Route::get('/kpi/edit/form_mstkpi/{id}', 'KPIController@form_edit_mstkpi');
+    Route::post('/kpi/master_kpi_save', 'KPIController@save_mst_kpi');
+    Route::post('/kpi/master_kpi_edit', 'KPIController@edit_mst_kpi');
+    Route::get('/kpi/master_kpi_delete/{id}', 'KPIController@delete_mst_kpi');
+
+
+    //KPI Tx
+    Route::get('/txkpi', 'KPIController@txkpi_list');
+    Route::get('/txkpi/form_txkpi', 'KPIController@form_txkpi');
+    Route::get('/txkpi/edit/form_txkpi/{id}', 'KPIController@form_edit_txkpi');
+    Route::post('/txkpi/kpi_save', 'KPIController@save_tx_kpi');
+    Route::post('/txkpi/kpi_edit', 'KPIController@edit_tx_kpi');
+    Route::get('/txkpi/kpi_delete/{id}', 'KPIController@delete_tx_kpi');
+    Route::get('/input_kpi', 'KPIController@form_input_kpi');
+
+    //TKP
+    //TKP Mst
+    // Route::get('/tkp', 'TKPController@tkp_list');
+    // Route::get('/tkp/form_tkp', 'TKPController@form_tkp');
+    // Route::get('/tkp/edit/form_msttkp/{id}', 'TKPController@form_edit_msttkp');
+    // Route::post('/tkp/master_tkp_save', 'TKPController@save_mst_tkp');
+    // Route::post('/tkp/master_tkp_edit', 'TKPController@edit_mst_tkp');
+    // Route::get('/tkp/master_tkp_delete/{id}', 'TKPController@delete_mst_tkp');
+
+
+    // //TKP Tx
+    // Route::get('/txtkp', 'TKPController@txtkp_list');
+    // Route::get('/txtkp/form_txtkp', 'TKPController@form_txtkp');
+    // Route::get('/txtkp/edit/form_txtkp/{id}', 'TKPController@form_edit_txtkp');
+    // Route::post('/txtkp/tkp_save', 'TKPController@save_tx_tkp');
+    // Route::post('/txtkp/tkp_edit', 'TKPController@edit_tx_tkp');
+    // Route::get('/txtkp/tkp_delete/{id}', 'TKPController@delete_tx_tkp');
+    // Route::get('/input_tkp', 'TKPController@form_input_tkp');
+
     
     // Master
     // Master Indicator
