@@ -81,9 +81,11 @@
 												Title Standard Operational Procedure (SOP)
 											</div>
 											<div style="margin-top:15px">
-												<button class="uk-button uk-button-primary fl-button-circle" type="button">
-													Upload
-												</button>
+												<a href="{{url('sop_upload')}}">
+													<button class="uk-button uk-button-success fl-button" style="color:#666666" type="button">
+														Upload
+													</button>
+												</a>
 											</div>
 										</div
 									</td>
@@ -92,7 +94,8 @@
 						</div>	
 					</li>
 
-					<?php for($a=1;$a<=5;$a++){ ?>
+					{{$i=1}}
+					@foreach($data as $item)
 							<li>
 								<div class="uk-card uk-card-default uk-card-body fl-menu-box fl-box-color6" align="center">
 									<table style="height:55vh">
@@ -100,13 +103,13 @@
 											<td>
 												<div align="center">
 													<img src="templateslide/assets/img/icon/sopPdf.png" width="120"><br>
-													<span style="font-size:22px;font-weight:600">SOP <?php echo $a; ?></span>
+													<span style="font-size:22px;font-weight:600">SOP {{$i++}}</span>
 													<div>
-														Title Standard Operational Procedure (SOP)
+														{{$item->FILE_NAME}}
 													</div>
 													<div style="margin-top:15px">
-														<button class="uk-button uk-button-primary fl-button-circle" type="button">
-															Download
+														<button class="uk-button uk-button-success fl-button" type="button">
+															<a href="{{url('sop_download/'.$item->FILE_NAME)}}">Download</a>
 														</button>
 													</div>
 												</div
@@ -115,7 +118,7 @@
 									</table>								    
 								</div>	
 							</li>
-					<?php } ?>
+						@endforeach
 				</ul>
 
 				<a class="uk-position-center-left uk-position-small uk-hidden-hover uk-light" href="#" uk-slidenav-previous uk-slider-item="previous"></a>

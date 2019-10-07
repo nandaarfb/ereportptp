@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Dokumen;
+use App\Models\Sop;
 
-class DokumenController extends Controller
+class SopController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,28 +18,30 @@ class DokumenController extends Controller
     // }s
 
     public function index(){
-        $data = Dokumen::get();
-        return view('dokumen.dokumen_pendukung', compact('data'));
+        // dd($data);
+        $data = Sop::get();
+        
+        return view('sop.sop', compact('data'));
     }
 
     public function add_post(Request $request){
         $file = $request->file('file');
         $ext = $file->getClientOriginalExtension();
         $nama_file = time()."_".$file->getClientOriginalName();
-        $tujuan_upload = 'dokumen';
+        $tujuan_upload = 'sop';
         $file->move($tujuan_upload, $nama_file);
-        $simpan = new Dokumen();
+        $simpan = new Sop();
         $simpan->ORGANIZATION_STRUCTURE_ID = $request->organisasi_id;
         $simpan->FILE_NAME = $nama_file;
         $simpan->FILE_LOCATION = $tujuan_upload;
         $simpan->FILE_TYPE = $ext;
         $simpan->save();
 
-        return redirect('dokumen_pendukung');
+        return redirect('sop_index');
     }
 
     public function download($id){
-        return response()->download(public_path('dokumen/'.$id));
+        return response()->download(public_path('sop/'.$id));
     }
 
     public function master_menu(Request $request)
@@ -52,7 +54,7 @@ class DokumenController extends Controller
         ]);
     }
 
-    public function dokumen_pendukung_list(Request $request)
+    public function sop_list(Request $request)
     {
         //
     }

@@ -193,7 +193,7 @@
 					</div>
 
 					<div>
-					<a href="manajemen_report">
+					<a href="manajemen_report_index">
 						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
 					</a>
 						<span class="fl-icon-title">Divisi Peralatan</span>
@@ -207,13 +207,17 @@
 					</div>
 
 					<div>
+					<a href="dokumen_pendukung">
 						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
+					</a>
 						<span class="fl-icon-title">Sekerataris Perusahaan</span>
 					</div>
 
 					<div>
+					<a href="sop_index">
 						<img src="templateslide/assets/img/icon/div1.png" class="fl-icon">
 						<span class="fl-icon-title">Divisi Perencanaan dan Pengendalian</span>
+					</a>
 					</div>
 
 					<div>

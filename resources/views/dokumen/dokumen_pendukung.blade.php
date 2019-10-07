@@ -27,7 +27,7 @@
 <body>
 <body>
 
-	
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 	<div class="fl-main-container">
 		<!---Header----------->
 		<div class="fl-header fl-header-margin">
@@ -44,4 +44,111 @@
 			</div>	
 		</div>
 
-		
+		<div class="fl-container">
+			<div class="fl-title-page" >
+				<span style="font-size:20px">				
+					<img class="uk-preserve-width uk-border-circle" src="templateslide/assets/img/icon/sopReadMore.png" width="65">
+					Dokumen Pendukung	
+				</span>
+				<span style="float:right;margin-top:15px">
+					<button class="uk-button uk-button-default fl-button" type="button">Upload Dokumen</button>
+					<button class="uk-button uk-button-default fl-button" type="button" onclick="showModal()">Filter</button>
+					<button class="uk-button uk-button-primary fl-button" type="button">Lihat Lebih Banyak</button>
+				</span>
+			</div>
+
+			<div uk-slider="clsActivated: uk-transition-active" style="margin-top:15px">
+				<ul class="uk-grid-small uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-3@l uk-grid">
+					
+					<li>
+						<div class="uk-card uk-card-default uk-card-body fl-menu-box" align="center">
+							<table style="height:55vh">
+								<tr>
+									<td>
+										<div align="center" style="padding:10px">
+											<img src="templateslide/assets/img/icon/sopUpload.png" width="120"><br>
+											<span style="font-size:22px;font-weight:600">Upload Dokumen</span>
+											<div>
+												<br>
+											</div>
+											<div style="margin-top:15px">
+												<a href="{{url('dokumen_pendukung_upload')}}">
+													<button class="uk-button uk-button-success fl-button" style="color:#666666" type="button">
+														Upload
+													</button>
+												</a>
+											</div>
+										</div
+									</td>
+								</tr>
+							</table>								    
+						</div>	
+					</li>
+					{{$i=1}}
+					@foreach($data as $item)
+					
+							<li>
+								<div class="uk-card uk-card-default uk-card-body fl-menu-box" align="center">
+									<table style="height:55vh">
+										<tr>
+											<td>
+												<div align="center">
+													<img src="templateslide/assets/img/icon/sopExcel.png" width="120"><br>
+													<span style="font-size:22px;font-weight:600">Dokumen {{$i++}}</span>
+													<div>
+														{{$item->FILE_NAME}}
+													</div>
+													<div style="margin-top:15px">
+														<button class="uk-button uk-button-success fl-button" type="button">
+															<a href="{{url('dokumen_pendukung_download/'.$item->FILE_NAME)}}">Download</a>
+														</button>
+													</div>
+												</div
+											</td>
+										</tr>
+									</table>								    
+								</div>	
+							</li>
+
+					@endforeach
+				</ul>
+
+				<a class="uk-position-center-left uk-position-small uk-hidden-hover uk-light" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+				<a class="uk-position-center-right uk-position-small uk-hidden-hover  uk-light" href="#" uk-slidenav-next uk-slider-item="next"></a>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="mymodal" uk-modal >
+		<div class="uk-modal-dialog uk-modal-body">
+			<div>
+				<div uk-grid class="uk-grid-small uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-2@s" align="left	">
+					<div>
+						<b>Jenis SOP</b>
+						<input class="uk-input" type="text" placeholder="Masukan Jenis">
+					</div>
+					
+					<div>
+						<b>Judul</b>
+						<input class="uk-input" type="text" placeholder="Masukan Judul">
+					</div>
+
+					<div>
+						<b>Tanggal Upload</b>
+						<input class="uk-input" type="text" placeholder="Masukan Tanggal Upload">
+						<div style="padding-top:10px" align="right">
+							<button class="uk-button uk-button-primary fl-button" type="button">Search</button>			
+						</div>			
+					</div>
+				</div>
+			</div>
+	</div>
+</body>
+</html>
+
+<script>
+	function showModal(){
+		UIkit.modal("#mymodal").show();
+	}
+</script>
